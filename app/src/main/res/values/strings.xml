@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">KakaoPage-UI-Clone-App</string>
+    <string name="label_recommend">추천</string>
+    <string name="label_webtoon">웹툰</string>
+    <string name="label_web_novel">웹소설</string>
+    <string name="label_book">책</string>
+    <string name="description_menu">툴바에 있는 햄버거 메뉴 아이콘</string>
+    <string name="description_search">툴바에 있는 검색 아이콘</string>
+    <string name="label_home_screen">홈</string>
+    <string name="label_notification_screen">알림</string>
+    <string name="label_shortcut_screen">바로가기</string>
+    <string name="label_gift_box_screen">선물함</string>
+    <string name="label_storage_box_screen">보관함</string>
 </resources>

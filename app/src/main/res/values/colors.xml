@@ -3,8 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="gray_100">#d7d7d7</color>
-    <color name="gray_200">#b0b0b0</color>
+    <color name="gray_100">#eeeeee</color>
+    <color name="gray_150">#d7d7d7</color>
+    <color name="gray_200">#bcbcbc</color>
     <color name="gray_300">#979595</color>
     <color name="gray_400">#6f6f6f</color>
     <color name="gray_500">#5c5c5c</color>
@@ -13,4 +14,5 @@
     <color name="gray_800">#2b2b2b</color>
     <color name="gray_900">#222222</color>
     <color name="orange">#F09605</color>
+    <color name="green">#009674</color>
 </resources>

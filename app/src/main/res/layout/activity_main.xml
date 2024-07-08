@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <HorizontalScrollView
+        android:id="@+id/h_scroll_view_chip"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scrollbars="none"
@@ -105,6 +106,194 @@
 
     </HorizontalScrollView>
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/h_scroll_view_chip">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view_top_banner"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_gray_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_top_banner"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/description_top_banner_image"
+                android:src="@drawable/img_top_banner"
+                app:layout_constraintBottom_toBottomOf="@id/view_top_banner"
+                app:layout_constraintStart_toStartOf="@id/view_top_banner"
+                app:layout_constraintTop_toTopOf="@id/view_top_banner" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="전원 캐시선물, 오늘이 마지막!"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_top_banner"
+                app:layout_constraintStart_toEndOf="@id/iv_top_banner"
+                app:layout_constraintTop_toTopOf="@id/iv_top_banner" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_arrow_top_banner"
+                app:layout_constraintBottom_toBottomOf="@id/view_top_banner"
+                app:layout_constraintEnd_toEndOf="@id/view_top_banner"
+                app:layout_constraintTop_toTopOf="@id/view_top_banner" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="0dp"
+                android:paddingTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_top_banner"
+                app:layout_constraintVertical_weight="1" />
+
+            <View
+                android:id="@+id/view_center_banner"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_green_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_pager" />
+
+            <TextView
+                android:id="@+id/tv_center_banner_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="13dp"
+                android:text="밀리언 페이지"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_center_banner_sub_title"
+                app:layout_constraintEnd_toStartOf="@+id/iv_center_banner"
+                app:layout_constraintStart_toStartOf="@id/view_center_banner"
+                app:layout_constraintTop_toTopOf="@id/view_center_banner"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
+
+            <TextView
+                android:id="@+id/tv_center_banner_sub_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:text="100만의 PICK"
+                android:textColor="@color/gray_150"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/view_center_banner"
+                app:layout_constraintEnd_toEndOf="@+id/tv_center_banner_title"
+                app:layout_constraintStart_toStartOf="@id/tv_center_banner_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_center_banner_title" />
+
+            <ImageView
+                android:id="@+id/iv_center_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_million_crown"
+                app:layout_constraintBottom_toBottomOf="@id/view_center_banner"
+                app:layout_constraintEnd_toEndOf="@id/view_center_banner"
+                app:layout_constraintTop_toTopOf="@id/view_center_banner" />
+
+            <!--            <View-->
+            <!--                android:id="@+id/view_grid_area"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="4dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="@id/view_center_banner"-->
+            <!--                app:layout_constraintStart_toStartOf="@id/view_center_banner"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/view_center_banner" />-->
+
+            <!--            <include-->
+            <!--                android:id="@+id/include_grid"-->
+            <!--                layout="@layout/item_grid"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/view_grid_area"-->
+            <!--                app:layout_constraintEnd_toEndOf="@id/view_grid_area"-->
+            <!--                app:layout_constraintStart_toStartOf="@id/view_grid_area"-->
+            <!--                app:layout_constraintTop_toTopOf="@id/view_grid_area" />-->
+
+            <ImageView
+                android:id="@+id/iv_content_02"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="2dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_content_image_8dp"
+                android:clipToOutline="true"
+                android:src="@drawable/img_content_02"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_04"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toStartOf="@id/view_center_banner"
+                app:layout_constraintTop_toBottomOf="@id/view_center_banner" />
+
+            <ImageView
+                android:id="@+id/iv_content_04"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_content_image_8dp"
+                android:clipToOutline="true"
+                android:src="@drawable/img_content_04"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_03"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toEndOf="@id/iv_content_02"
+                app:layout_constraintTop_toTopOf="@id/iv_content_02" />
+
+            <ImageView
+                android:id="@+id/iv_content_03"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_content_image_8dp"
+                android:clipToOutline="true"
+                android:src="@drawable/img_content_03"
+                app:layout_constraintEnd_toEndOf="@id/view_center_banner"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toEndOf="@id/iv_content_04"
+                app:layout_constraintTop_toTopOf="@id/iv_content_02" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_main"
         android:layout_width="0dp"
@@ -112,6 +301,9 @@
         app:backgroundTint="@color/white"
         app:itemActiveIndicatorStyle="@null"
         app:itemIconTint="@color/selector_bottom_navigation_color"
+        app:itemPaddingTop="24dp"
+        app:itemTextAppearanceActive="@style/BottomNavigationText"
+        app:itemTextAppearanceInactive="@style/BottomNavigationText"
         app:itemTextColor="@color/selector_bottom_navigation_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

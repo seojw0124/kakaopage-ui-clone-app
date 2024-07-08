@@ -11,4 +11,5 @@
     <string name="label_shortcut_screen">바로가기</string>
     <string name="label_gift_box_screen">선물함</string>
     <string name="label_storage_box_screen">보관함</string>
+    <string name="description_top_banner_image">상단 배너 이미지</string>
 </resources>

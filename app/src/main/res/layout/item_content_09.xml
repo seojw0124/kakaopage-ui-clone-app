@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_content_09_waiting"
+        android:id="@+id/iv_content_09_free"
         android:layout_width="0dp"
         android:layout_height="16dp"
         android:layout_marginStart="4dp"

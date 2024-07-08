@@ -9,10 +9,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 
-class ViewPagerAdapter(private val imageList: List<Int>, private val pageList: List<String>) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
+class ViewPagerAdapter(
+    private val imageList: List<Int>,
+    private val titleList: List<Int>,
+    private val descriptionList: List<String>,
+    private val freeTypeList: List<Int?>,
+    private val upList: List<Int?>,
+    private val genreList: List<String?>,
+    private val pageList: List<String>
+) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.iv_content_01)
+        val title: ImageView = itemView.findViewById(R.id.iv_content_01_title)
+        val description: TextView = itemView.findViewById(R.id.tv_content_01_description)
+        val free: ImageView = itemView.findViewById(R.id.iv_content_01_free)
+        val up: ImageView = itemView.findViewById(R.id.iv_content_01_up)
+        val genre: TextView = itemView.findViewById(R.id.tv_content_01_genre)
         val page: TextView = itemView.findViewById(R.id.tv_content_01_current_page)
     }
 
@@ -23,6 +36,26 @@ class ViewPagerAdapter(private val imageList: List<Int>, private val pageList: L
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageView.setImageResource(imageList[position % imageList.size])
+        holder.title.setImageResource(titleList[position % titleList.size])
+        holder.description.text = descriptionList[position % descriptionList.size]
+        if (freeTypeList[position % freeTypeList.size] != null) {
+            holder.free.visibility = View.VISIBLE
+            holder.free.setImageResource(freeTypeList[position % freeTypeList.size]!!)
+        } else {
+            holder.free.visibility = View.INVISIBLE
+        }
+        if (upList[position % upList.size] != null) {
+            holder.up.visibility = View.VISIBLE
+            holder.up.setImageResource(upList[position % upList.size]!!)
+        } else {
+            holder.up.visibility = View.GONE
+        }
+        if (genreList[position % genreList.size] != null) {
+            holder.genre.visibility = View.VISIBLE
+            holder.genre.text = genreList[position % genreList.size]!!
+        } else {
+            holder.genre.visibility = View.INVISIBLE
+        }
         holder.page.text = pageList[position % pageList.size]
     }
 

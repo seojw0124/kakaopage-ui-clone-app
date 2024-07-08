@@ -14,15 +14,50 @@ class MainActivity : AppCompatActivity() {
 
     private val thumbnailImageList = listOf(
         R.drawable.img_content_01,
-        R.drawable.img_content_01,
-        R.drawable.img_content_01,
-        R.drawable.img_content_01,
-        R.drawable.img_content_01
+        R.drawable.img_content_16,
+        R.drawable.img_content_17,
+        R.drawable.img_content_18,
+        R.drawable.img_content_19
     )
 
     private val TitleList = listOf(
-        R.drawable.img_content_01_title
+        R.drawable.img_content_01_title,
+        R.drawable.img_content_16_title,
+        R.drawable.img_content_17_title,
+        R.drawable.img_content_18_title,
+        R.drawable.img_content_19_title
+    )
 
+    private val descriptionList = listOf(
+        "레전드의 귀환을 경배하라!",
+        "천재적 작품 감상하면 캐시!",
+        "이세계에 떨어진 무림고수?",
+        "지금 바로 캐시 선물 받아가세요!",
+        "왕년에 주먹 쓴 놈이 돌아왔다"
+    )
+
+    private val freeTypeList = listOf(
+        R.drawable.ic_free_3_days_waiting,
+        null,
+        null,
+        null,
+        R.drawable.ic_free_serial
+    )
+
+    private val upList = listOf(
+        R.drawable.ic_up,
+        null,
+        null,
+        null,
+        null
+    )
+
+    private val genreList = listOf(
+        "웹소설·판타지",
+        null,
+        null,
+        null,
+        "웹툰·액션·349.8만"
     )
 
     private val pageList = listOf(
@@ -52,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViewPager2() {
         val viewPager = findViewById<ViewPager2>(R.id.view_pager)
-        val adapter = ViewPagerAdapter(thumbnailImageList, pageList)
+        val adapter = ViewPagerAdapter(thumbnailImageList, TitleList, descriptionList, freeTypeList, upList, genreList, pageList)
         viewPager.adapter = adapter
         //viewPager.setCurrentItem(Int.MAX_VALUE / 2, false) // 중앙으로 설정
     }

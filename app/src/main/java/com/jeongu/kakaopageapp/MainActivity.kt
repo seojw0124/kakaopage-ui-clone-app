@@ -83,6 +83,11 @@ class MainActivity : AppCompatActivity() {
         toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
             navigateToCashShop()
         }
+
+        val topBanner = findViewById<View>(R.id.view_top_banner)
+        topBanner.setOnClickListener {
+            navigateToCashEvent()
+        }
     }
 
     private fun initViewPager2() {
@@ -93,8 +98,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToCashShop() {
-        // 암시적 인텐트, url로 이동
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
+        startActivity(intent)
+    }
+
+    private fun navigateToCashEvent() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
         startActivity(intent)
     }
 }

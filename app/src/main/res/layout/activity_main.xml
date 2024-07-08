@@ -515,7 +515,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                app:layout_constraintStart_toStartOf="@id/tv_recently_viewed_contents"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_recently_viewed_contents">
 
                 <LinearLayout
@@ -539,10 +539,6 @@
                     <include layout="@layout/item_content_14" />
 
                     <include layout="@layout/item_content_15" />
-
-                    <Space
-                        android:layout_width="10dp"
-                        android:layout_height="0dp" />
 
                 </LinearLayout>
 

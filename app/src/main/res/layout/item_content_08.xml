@@ -8,6 +8,7 @@
         android:id="@+id/iv_content_08"
         android:layout_width="0dp"
         android:layout_height="140dp"
+        android:layout_marginStart="10dp"
         android:adjustViewBounds="true"
         android:background="@drawable/bg_content_image_8dp"
         android:clipToOutline="true"

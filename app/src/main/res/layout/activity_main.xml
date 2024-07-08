@@ -261,6 +261,32 @@
                 app:layout_constraintTop_toBottomOf="@id/view_center_banner" />
 
             <ImageView
+                android:id="@+id/iv_content_02_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_content_02_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_content_02_views"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_04_title"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toStartOf="@id/iv_content_02" />
+
+            <TextView
+                android:id="@+id/tv_content_02_views"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="5억"
+                android:textColor="@color/gray_150"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_02"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_02"
+                app:layout_constraintStart_toStartOf="@id/iv_content_02" />
+
+            <ImageView
                 android:id="@+id/iv_content_04"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -271,9 +297,36 @@
                 android:clipToOutline="true"
                 android:src="@drawable/img_content_04"
                 app:layout_constraintEnd_toStartOf="@id/iv_content_03"
-                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintHorizontal_weight="0.334"
                 app:layout_constraintStart_toEndOf="@id/iv_content_02"
                 app:layout_constraintTop_toTopOf="@id/iv_content_02" />
+
+            <ImageView
+                android:id="@+id/iv_content_04_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_content_04_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_content_04_views"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_03_title"
+                app:layout_constraintHorizontal_weight="0.334"
+                app:layout_constraintStart_toEndOf="@id/iv_content_02_title" />
+
+            <TextView
+                android:id="@+id/tv_content_04_views"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="캐시선물 적립하세요"
+                android:textColor="@color/gray_150"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_04"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_04"
+                app:layout_constraintStart_toStartOf="@id/iv_content_04" />
 
             <ImageView
                 android:id="@+id/iv_content_03"
@@ -287,8 +340,186 @@
                 app:layout_constraintEnd_toEndOf="@id/view_center_banner"
                 app:layout_constraintHorizontal_weight="0.333"
                 app:layout_constraintStart_toEndOf="@id/iv_content_04"
-                app:layout_constraintTop_toTopOf="@id/iv_content_02" />
+                app:layout_constraintTop_toTopOf="@id/iv_content_04" />
 
+            <ImageView
+                android:id="@+id/iv_content_03_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_content_03_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_content_03_views"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_03"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toEndOf="@id/iv_content_04_title" />
+
+            <TextView
+                android:id="@+id/tv_content_03_views"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="1.5억"
+                android:textColor="@color/gray_150"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_03"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_03"
+                app:layout_constraintStart_toStartOf="@id/iv_content_03" />
+
+            <ImageView
+                android:id="@+id/iv_content_05"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="2dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_content_image_8dp"
+                android:clipToOutline="true"
+                android:src="@drawable/img_content_05"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_06"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toStartOf="@id/iv_content_02"
+                app:layout_constraintTop_toBottomOf="@id/iv_content_02" />
+
+            <ImageView
+                android:id="@+id/iv_content_05_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_content_05_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_content_05_views"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_06_title"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toStartOf="@id/iv_content_05" />
+
+            <TextView
+                android:id="@+id/tv_content_05_views"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="5,960만"
+                android:textColor="@color/gray_150"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_05"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_05"
+                app:layout_constraintStart_toStartOf="@id/iv_content_05" />
+
+            <ImageView
+                android:id="@+id/iv_content_06"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_content_image_8dp"
+                android:clipToOutline="true"
+                android:src="@drawable/img_content_06"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_07"
+                app:layout_constraintHorizontal_weight="0.334"
+                app:layout_constraintStart_toEndOf="@id/iv_content_05"
+                app:layout_constraintTop_toTopOf="@id/iv_content_05" />
+
+            <ImageView
+                android:id="@+id/iv_content_06_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_content_06_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_content_06_views"
+                app:layout_constraintEnd_toStartOf="@id/iv_content_07_title"
+                app:layout_constraintHorizontal_weight="0.334"
+                app:layout_constraintStart_toEndOf="@id/iv_content_05_title" />
+
+            <TextView
+                android:id="@+id/tv_content_06_views"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="1.4억"
+                android:textColor="@color/gray_150"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_06"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_06"
+                app:layout_constraintStart_toStartOf="@id/iv_content_06" />
+
+            <ImageView
+                android:id="@+id/iv_content_07"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_content_image_8dp"
+                android:clipToOutline="true"
+                android:src="@drawable/img_content_07"
+                app:layout_constraintEnd_toEndOf="@id/view_center_banner"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toEndOf="@id/iv_content_06"
+                app:layout_constraintTop_toTopOf="@id/iv_content_06" />
+
+            <ImageView
+                android:id="@+id/iv_content_07_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_content_07_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_content_07_views"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_07"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toEndOf="@id/iv_content_06_title" />
+
+            <TextView
+                android:id="@+id/tv_content_07_views"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="334.3만"
+                android:textColor="@color/gray_150"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_07"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_07"
+                app:layout_constraintStart_toStartOf="@id/iv_content_07" />
+
+            <TextView
+                android:id="@+id/tv_recently_viewed_contents"
+                style="@style/AppTextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="최근 본 작품"
+                app:layout_constraintEnd_toStartOf="@+id/iv_arrow_content"
+                app:layout_constraintStart_toStartOf="@id/iv_content_05"
+                app:layout_constraintTop_toBottomOf="@id/iv_content_05" />
+
+            <ImageView
+                android:id="@+id/iv_arrow_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_content"
+                app:layout_constraintBottom_toBottomOf="@id/tv_recently_viewed_contents"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_07"
+                app:layout_constraintTop_toTopOf="@id/tv_recently_viewed_contents" />
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintStart_toStartOf="@id/iv_content_05"
+                app:layout_constraintTop_toBottomOf="@id/iv_content_05">
+
+
+            </HorizontalScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

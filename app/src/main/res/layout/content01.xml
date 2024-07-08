@@ -54,10 +54,11 @@
 
     <ImageView
         android:id="@+id/iv_content_01_title"
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:src="@drawable/img_content_01_title"
-        app:layout_constraintBottom_toBottomOf="@id/tv_content_01_description"
+        app:layout_constraintBottom_toTopOf="@id/iv_content_01_waiting"
         app:layout_constraintStart_toStartOf="@id/tv_content_01_description" />
 
     <TextView
@@ -65,15 +66,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:text="레전드 귀한을 경배하라!"
+        android:text="레전드의 귀한을 경배하라!"
         android:textColor="@color/gray_200"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/iv_content_01_waiting"
         app:layout_constraintStart_toStartOf="@id/iv_content_01_waiting" />
 
     <ImageView
         android:id="@+id/iv_content_01_waiting"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="16dp"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="15dp"
         android:adjustViewBounds="true"
@@ -84,7 +86,7 @@
     <ImageView
         android:id="@+id/iv_content_01_up"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="16dp"
         android:layout_marginStart="2dp"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_up"
@@ -98,18 +100,19 @@
         android:layout_marginStart="4dp"
         android:text="웹소설·판타지"
         android:textColor="@color/gray_100"
-        android:textSize="13sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_content_01_up"
         app:layout_constraintStart_toEndOf="@id/iv_content_01_up"
         app:layout_constraintTop_toTopOf="@id/iv_content_01_up" />
 
     <TextView
+        android:id="@+id/tv_content_01_current_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
         android:text="1/5"
         android:textColor="@color/white"
-        android:textSize="13sp"
+        android:textSize="11sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/tv_content_01_genre"
         app:layout_constraintEnd_toEndOf="@id/iv_content_01" />

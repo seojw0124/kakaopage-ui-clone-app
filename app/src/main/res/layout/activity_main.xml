@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/layout_toolbar"
         layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
@@ -515,9 +515,36 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                app:layout_constraintStart_toStartOf="@id/iv_content_05"
-                app:layout_constraintTop_toBottomOf="@id/iv_content_05">
+                app:layout_constraintStart_toStartOf="@id/tv_recently_viewed_contents"
+                app:layout_constraintTop_toBottomOf="@id/tv_recently_viewed_contents">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp">
+
+                    <include layout="@layout/item_content_08" />
+
+                    <include layout="@layout/item_content_09" />
+
+                    <include layout="@layout/item_content_10" />
+
+                    <include layout="@layout/item_content_11" />
+
+                    <include layout="@layout/item_content_12" />
+
+                    <include layout="@layout/item_content_13" />
+
+                    <include layout="@layout/item_content_14" />
+
+                    <include layout="@layout/item_content_15" />
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="0dp" />
+
+                </LinearLayout>
 
             </HorizontalScrollView>
 

@@ -70,6 +70,7 @@
         app:layout_constraintTop_toTopOf="@id/iv_toolbar_menu" />
 
     <ImageView
+        android:id="@+id/iv_toolbar_cash"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="10dp"

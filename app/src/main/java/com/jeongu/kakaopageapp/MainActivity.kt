@@ -3,15 +3,29 @@ package com.jeongu.kakaopageapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.HorizontalScrollView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.children
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+
+const val EXTRA_STRING_CHIP = "chip"
 
 class MainActivity : AppCompatActivity() {
+
+    private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
+    private var previousChipId: Int = View.NO_ID
 
     private val thumbnailImageList = listOf(
         R.drawable.img_content_01,
@@ -87,6 +101,7 @@ class MainActivity : AppCompatActivity() {
         setToolbar()
         setTopBanner()
         setBottomNavigation()
+        setChip()
     }
 
     private fun setViewPager2() {
@@ -129,5 +144,79 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    private fun setChip() {
+        val chipData = intent.getStringExtra(EXTRA_STRING_CHIP) ?: ""
+        chipGroup.children.forEach {
+            if ((it as Chip).text == chipData) {
+                it.performClick() // 바로가기에서 넘어온 칩을 클릭한 상태로 설정
+                // 레이아웃이 다 그려지지 않아서 밑에 scrollToChip을 호출하면 chipStart, chipEnd, scrollViewWidth가 0으로 나옴
+                it.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                    override fun onGlobalLayout() {
+                        it.viewTreeObserver.removeOnGlobalLayoutListener(this) // 메모리 누수를 방지하기 위해 (이거 없어도 작동되긴 하는데, 구글링 해보니 width가 0으로 나오는 경우가 있어서 추가함)
+                        scrollToChip(it)
+                    }
+                })
+            }
+        }
+
+        previousChipId = chipGroup.checkedChipId // 이전에 선택한 칩을 저장
+        var selectedChip = chipGroup.findViewById<Chip>(chipGroup.checkedChipId) // 현재 선택한 칩을 저장 (실행하고 미리 체크돼있는 칩을 저장하기 위해)
+        selectedChip.apply {
+            isChipIconVisible = true
+            setChipIconResource(setChipIcon(selectedChip.text.toString()))
+            textStartPadding = 0f
+            //scrollToChip(this) // 이거 하면 0으로 나옴
+        }
+        chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                selectedChip = group.findViewById<Chip>(checkedIds[0])
+                if (previousChipId != View.NO_ID) {
+                    val previousChip = group.findViewById<Chip>(previousChipId)
+                    previousChip?.apply {
+                        isChipIconVisible = false
+                        textStartPadding = 22f // 이전에 선택한 칩의 padding을 원래대로 돌려놓음(사실 디폴트 padding 값을 못찾겠음. 야매임)
+                    }
+                }
+                selectedChip?.apply {
+                    isChipIconVisible = true
+                    setChipIconResource(setChipIcon(selectedChip.text.toString()))
+                    textStartPadding = 0f // 이걸 해야 아이콘과 텍스트가 붙어서 나옴
+                    scrollToChip(this)
+                }
+                previousChipId = selectedChip?.id ?: View.NO_ID // 이전에 선택한 칩에 현재 선택한 칩을 저장 -> 다른 칩을 계속해서 선택하기 때문에 이전에 선택한 칩을 저장해놔야 함
+            }
+        }
+    }
+
+    private fun setChipIcon(text: String): Int {
+        val icon = when (text) {
+            "지금핫한" -> R.drawable.ic_thunder
+            "실시간 랭킹" -> R.drawable.ic_crown
+            "오늘신작" -> R.drawable.ic_bell
+            "TV속 작품" -> R.drawable.ic_popcorn
+            "이벤트" -> R.drawable.ic_star
+            "남성인기" -> R.drawable.ic_men
+            "여성인기" -> R.drawable.ic_women
+            "완결추천" -> R.drawable.ic_ring
+            "브랜드" -> R.drawable.ic_c_coin
+            else -> R.drawable.ic_thunder
+        }
+        return icon
+    }
+
+    private fun scrollToChip(chip: Chip) {
+        val scrollView = chip.parent.parent as? HorizontalScrollView ?: return  // 칩의 부모의 부모가 스크롤뷰
+
+        // 칩의 위치 계산
+        val chipStart = chip.left
+        val chipEnd = chip.right
+        val scrollViewWidth = scrollView.width
+
+        Log.d("MainActivity", "chipStart: $chipStart, chipEnd: $chipEnd, scrollViewWidth: $scrollViewWidth")
+
+        val scrollX = (chipStart + chipEnd - scrollViewWidth) / 2 // 칩이 스크롤뷰의 가운데에 오도록 스크롤
+        scrollView.smoothScrollTo(scrollX, 0)
     }
 }

@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="@id/view_category_02" />
 
     <TextView
+        android:id="@+id/tv_category_02"
         style="@style/AppTextCaption.Bold.Black"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -78,32 +79,56 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        initViewPager2()
-        val toolbar = findViewById<View>(R.id.layout_toolbar)
-        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
-            navigateToCashShop()
-        }
-
-        val topBanner = findViewById<View>(R.id.view_top_banner)
-        topBanner.setOnClickListener {
-            navigateToCashEvent()
-        }
+        setLayout()
     }
 
-    private fun initViewPager2() {
+    private fun setLayout() {
+        setViewPager2()
+        setToolbar()
+        setTopBanner()
+        setBottomNavigation()
+    }
+
+    private fun setViewPager2() {
         val viewPager = findViewById<ViewPager2>(R.id.view_pager)
         val adapter = ViewPagerAdapter(thumbnailImageList, TitleList, descriptionList, freeTypeList, upList, genreList, pageList)
         viewPager.adapter = adapter
         //viewPager.setCurrentItem(Int.MAX_VALUE / 2, false) // 중앙으로 설정
     }
 
-    private fun navigateToCashShop() {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
-        startActivity(intent)
+    private fun setToolbar() {
+        val toolbar = findViewById<View>(R.id.layout_toolbar)
+        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
+            startActivity(intent)
+        }
     }
 
-    private fun navigateToCashEvent() {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
-        startActivity(intent)
+    private fun setTopBanner() {
+        val topBanner = findViewById<View>(R.id.view_top_banner)
+        topBanner.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
+            startActivity(intent)
+        }
+    }
+
+    private fun setBottomNavigation() {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
+        bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_home -> {
+                    if (bottomNavigationView.selectedItemId == R.id.navigation_home) return@setOnItemSelectedListener true
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+
+                R.id.navigation_shortcut -> {
+                    if (bottomNavigationView.selectedItemId == R.id.navigation_shortcut) return@setOnItemSelectedListener true
+                    val intent = Intent(this, ShortcutActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
     }
 }

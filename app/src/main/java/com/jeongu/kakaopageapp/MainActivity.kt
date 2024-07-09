@@ -121,7 +121,6 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-
                 R.id.navigation_shortcut -> {
                     if (bottomNavigationView.selectedItemId == R.id.navigation_shortcut) return@setOnItemSelectedListener true
                     val intent = Intent(this, ShortcutActivity::class.java)

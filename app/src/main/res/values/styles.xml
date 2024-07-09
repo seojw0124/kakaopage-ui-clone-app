@@ -3,7 +3,7 @@
 
     <style name="AppToolbar">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/gray_300</item>
+        <item name="android:textColor">@color/gray_350</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -15,7 +15,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/gray_700</item>
         <item name="chipStrokeWidth">1dp</item>
-        <item name="chipStrokeColor">@color/gray_150</item>
+        <item name="chipStrokeColor">@color/gray_200</item>
         <item name="chipBackgroundColor">@color/white</item>
         <item name="chipMinHeight">34dp</item>
         <item name="chipStartPadding">6dp</item>
@@ -51,10 +51,22 @@
     <style name="BottomNavigationText" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">11sp</item>
     </style>
-    
-    <style name="AppTextGenre">
+
+    <style name="AppTextCaption">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/gray_100</item>
+        <item name="android:textColor">@color/gray_150</item>
+    </style>
+    
+    <style name="AppTextCaption.Gray150">
+        <item name="android:textColor">@color/gray_150</item>
+    </style>
+
+    <style name="AppTextCaption.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTextCaption.Bold.Black">
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="AppTextTitle">

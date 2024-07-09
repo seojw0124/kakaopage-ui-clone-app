@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="5억"
-        android:textColor="@color/gray_150"
+        android:textColor="@color/gray_200"
         android:textSize="10sp"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="@id/iv_content_02"

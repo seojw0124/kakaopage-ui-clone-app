@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:text="레전드의 귀환을 경배하라!"
-        android:textColor="@color/gray_200"
+        android:textColor="@color/gray_250"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/iv_content_01_free"
         app:layout_constraintStart_toStartOf="@id/iv_content_01_free" />
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="웹소설·판타지"
-        android:textColor="@color/gray_100"
+        android:textColor="@color/gray_150"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_content_01_free"
         app:layout_constraintStart_toEndOf="@id/iv_content_01_up"

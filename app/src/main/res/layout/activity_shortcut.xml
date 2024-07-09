@@ -7,6 +7,561 @@
     android:layout_height="match_parent"
     tools:context=".ShortcutActivity">
 
+    <include
+        android:id="@+id/layout_toolbar_shortcut"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_toolbar_shortcut">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view_shortcut_top_banner"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_gray150_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_shortcut_top_banner"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/description_top_banner_image"
+                android:src="@drawable/img_top_banner"
+                app:layout_constraintBottom_toBottomOf="@id/view_shortcut_top_banner"
+                app:layout_constraintStart_toStartOf="@id/view_shortcut_top_banner"
+                app:layout_constraintTop_toTopOf="@id/view_shortcut_top_banner" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="전원 캐시선물, 오늘이 마지막!"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_shortcut_top_banner"
+                app:layout_constraintStart_toEndOf="@id/iv_shortcut_top_banner"
+                app:layout_constraintTop_toTopOf="@id/iv_shortcut_top_banner" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_arrow_top_banner"
+                app:layout_constraintBottom_toBottomOf="@id/view_shortcut_top_banner"
+                app:layout_constraintEnd_toEndOf="@id/view_shortcut_top_banner"
+                app:layout_constraintTop_toTopOf="@id/view_shortcut_top_banner" />
+
+            <ImageView
+                android:id="@+id/iv_webtoon"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_webtoon"
+                android:src="@drawable/ic_webtoon"
+                app:layout_constraintEnd_toStartOf="@id/iv_web_novel"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toStartOf="@id/view_shortcut_top_banner"
+                app:layout_constraintTop_toBottomOf="@id/view_shortcut_top_banner" />
+
+            <TextView
+                android:id="@+id/tv_webtoon"
+                style="@style/AppTextCaption.Bold.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="웹툰"
+                app:layout_constraintEnd_toEndOf="@id/iv_webtoon"
+                app:layout_constraintStart_toStartOf="@id/iv_webtoon"
+                app:layout_constraintTop_toBottomOf="@id/iv_webtoon" />
+
+            <ImageView
+                android:id="@+id/iv_web_novel"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_web_novel"
+                android:src="@drawable/ic_web_novel"
+                app:layout_constraintEnd_toStartOf="@id/iv_book"
+                app:layout_constraintHorizontal_weight="0.334"
+                app:layout_constraintStart_toEndOf="@id/iv_webtoon"
+                app:layout_constraintTop_toTopOf="@id/iv_webtoon" />
+
+            <TextView
+                android:id="@+id/tv_web_novel"
+                style="@style/AppTextCaption.Bold.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="웹소설"
+                app:layout_constraintEnd_toEndOf="@id/iv_web_novel"
+                app:layout_constraintStart_toStartOf="@id/iv_web_novel"
+                app:layout_constraintTop_toBottomOf="@id/iv_web_novel" />
+
+            <ImageView
+                android:id="@+id/iv_book"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_book"
+                android:src="@drawable/ic_book"
+                app:layout_constraintEnd_toEndOf="@id/view_shortcut_top_banner"
+                app:layout_constraintHorizontal_weight="0.333"
+                app:layout_constraintStart_toEndOf="@id/iv_web_novel"
+                app:layout_constraintTop_toTopOf="@id/iv_web_novel" />
+
+            <TextView
+                android:id="@+id/tv_book"
+                style="@style/AppTextCaption.Bold.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="책"
+                app:layout_constraintEnd_toEndOf="@id/iv_book"
+                app:layout_constraintStart_toStartOf="@id/iv_book"
+                app:layout_constraintTop_toBottomOf="@id/iv_book" />
+
+            <TextView
+                android:id="@+id/tv_label_recommend"
+                style="@style/AppTextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="추천"
+                app:layout_constraintEnd_toEndOf="@id/view_shortcut_top_banner"
+                app:layout_constraintStart_toStartOf="@+id/view_shortcut_top_banner"
+                app:layout_constraintTop_toBottomOf="@id/tv_webtoon" />
+
+            <View
+                android:id="@+id/view_category_01_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_01"
+                layout="@layout/item_category_01"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_01_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_01_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_01_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_01_area" />
+
+            <View
+                android:id="@+id/view_category_02_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_02"
+                layout="@layout/item_category_02"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_02_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_02_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_02_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_02_area" />
+
+            <View
+                android:id="@+id/view_category_03_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_03"
+                layout="@layout/item_category_03"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_03_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_03_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_03_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_03_area" />
+
+            <View
+                android:id="@+id/view_category_04_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_04"
+                layout="@layout/item_category_04"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_04_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_04_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_04_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_04_area" />
+
+            <View
+                android:id="@+id/view_category_05_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_05"
+                layout="@layout/item_category_05"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_05_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_05_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_05_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_05_area" />
+
+            <View
+                android:id="@+id/view_category_06_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_06"
+                layout="@layout/item_category_06"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_06_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_06_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_06_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_06_area" />
+
+            <View
+                android:id="@+id/view_category_07_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_07"
+                layout="@layout/item_category_07"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_07_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_07_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_07_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_07_area" />
+
+            <View
+                android:id="@+id/view_category_08_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_08"
+                layout="@layout/item_category_08"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_08_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_08_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_08_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_08_area" />
+
+            <View
+                android:id="@+id/view_category_09_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_09"
+                layout="@layout/item_category_09"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_09_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_09_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_09_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_09_area" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow_category"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="28dp"
+                android:orientation="horizontal"
+                app:constraint_referenced_ids="view_category_01_area, view_category_02_area, view_category_03_area, view_category_04_area, view_category_05_area, view_category_06_area, view_category_07_area, view_category_08_area, view_category_09_area"
+                app:flow_horizontalGap="4dp"
+                app:flow_horizontalStyle="spread_inside"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="4dp"
+                app:flow_wrapMode="aligned"
+                app:layout_constraintEnd_toEndOf="@id/tv_label_recommend"
+                app:layout_constraintStart_toStartOf="@id/tv_label_recommend"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_recommend" />
+
+            <TextView
+                android:id="@+id/tv_label_webtoon"
+                style="@style/AppTextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="0dp"
+                android:text="웹툰"
+                app:layout_constraintEnd_toStartOf="@id/tv_label_webtoon_total"
+                app:layout_constraintStart_toStartOf="@+id/flow_category"
+                app:layout_constraintTop_toBottomOf="@id/flow_category" />
+
+            <TextView
+                android:id="@+id/tv_label_webtoon_total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingEnd="5dp"
+                android:text="총 16,064 작품"
+                android:textColor="@color/gray_300"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_label_webtoon"
+                app:layout_constraintEnd_toEndOf="@id/flow_category"
+                app:layout_constraintStart_toEndOf="@+id/tv_label_webtoon"
+                app:layout_constraintTop_toTopOf="@id/tv_label_webtoon" />
+
+
+            <View
+                android:id="@+id/view_category_webtoon_01_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_01"
+                layout="@layout/item_category_01"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_01_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_01_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_01_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_01_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_02_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_02"
+                layout="@layout/item_category_02"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_02_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_02_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_02_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_02_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_03_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_03"
+                layout="@layout/item_category_03"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_03_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_03_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_03_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_03_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_04_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_04"
+                layout="@layout/item_category_04"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_04_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_04_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_04_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_04_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_05_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_05"
+                layout="@layout/item_category_05"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_05_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_05_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_05_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_05_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_06_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_06"
+                layout="@layout/item_category_06"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_06_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_06_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_06_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_06_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_07_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_07"
+                layout="@layout/item_category_07"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_07_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_07_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_07_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_07_area" />
+
+            <View
+            android:id="@+id/view_category_webtoon_10_area"
+            android:layout_width="0dp"
+            android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_10"
+                layout="@layout/item_category_10"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_10_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_10_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_10_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_10_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_11_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_11"
+                layout="@layout/item_category_11"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_11_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_11_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_11_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_11_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_12_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_12"
+                layout="@layout/item_category_12"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_12_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_12_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_12_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_12_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_13_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_13"
+                layout="@layout/item_category_13"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_13_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_13_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_13_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_13_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_14_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_14"
+                layout="@layout/item_category_14"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_14_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_14_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_14_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_14_area" />
+
+            <View
+                android:id="@+id/view_category_webtoon_15_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/layout_category_webtoon_15"
+                layout="@layout/item_category_15"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_category_webtoon_15_area"
+                app:layout_constraintEnd_toEndOf="@id/view_category_webtoon_15_area"
+                app:layout_constraintStart_toStartOf="@id/view_category_webtoon_15_area"
+                app:layout_constraintTop_toTopOf="@id/view_category_webtoon_15_area" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow_category_webtoon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="28dp"
+                android:orientation="horizontal"
+                app:constraint_referenced_ids="view_category_webtoon_01_area, view_category_webtoon_02_area, view_category_webtoon_03_area, view_category_webtoon_04_area, view_category_webtoon_05_area, view_category_webtoon_06_area, view_category_webtoon_07_area, view_category_webtoon_10_area, view_category_webtoon_11_area, view_category_webtoon_12_area, view_category_webtoon_13_area, view_category_webtoon_14_area, view_category_webtoon_15_area"
+                app:flow_horizontalGap="4dp"
+                app:flow_horizontalStyle="spread_inside"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="4dp"
+                app:flow_wrapMode="aligned"
+                app:layout_constraintEnd_toEndOf="@id/tv_label_webtoon_total"
+                app:layout_constraintStart_toStartOf="@id/tv_label_webtoon"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_webtoon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_main"
         android:layout_width="0dp"

@@ -256,6 +256,17 @@
                 app:layout_constraintTop_toBottomOf="@id/view_center_banner" />
 
             <ImageView
+                android:id="@+id/iv_content_02_free"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_free_3_days_waiting"
+                app:layout_constraintStart_toStartOf="@id/iv_content_02"
+                app:layout_constraintTop_toTopOf="@id/iv_content_02" />
+
+            <ImageView
                 android:id="@+id/iv_content_02_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -338,6 +349,27 @@
                 app:layout_constraintTop_toTopOf="@id/iv_content_04" />
 
             <ImageView
+                android:id="@+id/iv_content_03_free"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_free_3_days_waiting"
+                app:layout_constraintStart_toStartOf="@id/iv_content_03"
+                app:layout_constraintTop_toTopOf="@id/iv_content_03" />
+
+            <ImageView
+                android:id="@+id/iv_content_03_up"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="2dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_up"
+                app:layout_constraintStart_toEndOf="@id/iv_content_03_free"
+                app:layout_constraintTop_toTopOf="@id/iv_content_03_free" />
+
+            <ImageView
                 android:id="@+id/iv_content_03_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -377,6 +409,17 @@
                 app:layout_constraintHorizontal_weight="0.333"
                 app:layout_constraintStart_toStartOf="@id/iv_content_02"
                 app:layout_constraintTop_toBottomOf="@id/iv_content_02" />
+
+            <ImageView
+                android:id="@+id/iv_content_05_free"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_free_3_days_waiting"
+                app:layout_constraintStart_toStartOf="@id/iv_content_05"
+                app:layout_constraintTop_toTopOf="@id/iv_content_05" />
 
             <ImageView
                 android:id="@+id/iv_content_05_title"
@@ -420,6 +463,17 @@
                 app:layout_constraintTop_toTopOf="@id/iv_content_05" />
 
             <ImageView
+                android:id="@+id/iv_content_06_free"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_clock"
+                app:layout_constraintStart_toStartOf="@id/iv_content_06"
+                app:layout_constraintTop_toTopOf="@id/iv_content_06" />
+
+            <ImageView
                 android:id="@+id/iv_content_06_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -459,6 +513,17 @@
                 app:layout_constraintHorizontal_weight="0.333"
                 app:layout_constraintStart_toEndOf="@id/iv_content_06"
                 app:layout_constraintTop_toTopOf="@id/iv_content_06" />
+
+            <ImageView
+                android:id="@+id/iv_content_07_event"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_event"
+                app:layout_constraintStart_toStartOf="@id/iv_content_07"
+                app:layout_constraintTop_toTopOf="@id/iv_content_07" />
 
             <ImageView
                 android:id="@+id/iv_content_07_title"
@@ -523,13 +588,13 @@
 
                     <include layout="@layout/item_content_09" />
 
-                    <include layout="@layout/item_content_10" />
+                    <include layout="@layout/item_content_13" />
 
-                    <include layout="@layout/item_content_12" />
+                    <include layout="@layout/item_content_10" />
 
                     <include layout="@layout/item_content_11" />
 
-                    <include layout="@layout/item_content_13" />
+                    <include layout="@layout/item_content_12" />
 
                     <include layout="@layout/item_content_14" />
 

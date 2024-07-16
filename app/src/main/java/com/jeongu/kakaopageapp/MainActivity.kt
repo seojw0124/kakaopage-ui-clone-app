@@ -9,8 +9,6 @@ import android.view.ViewTreeObserver
 import android.widget.HorizontalScrollView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,74 +17,31 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.jeongu.kakaopageapp.data.ContentManager
+import com.jeongu.kakaopageapp.data.TopContentManager
+import com.jeongu.kakaopageapp.databinding.ActivityMainBinding
 
 const val EXTRA_STRING_CHIP = "chip"
 
 class MainActivity : AppCompatActivity() {
 
-    private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    //private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
     private var previousChipId: Int = View.NO_ID
 
-    private val thumbnailImageList = listOf(
-        R.drawable.img_content_01,
-        R.drawable.img_content_16,
-        R.drawable.img_content_17,
-        R.drawable.img_content_18,
-        R.drawable.img_content_19
-    )
-
-    private val TitleList = listOf(
-        R.drawable.img_content_01_title,
-        R.drawable.img_content_16_title,
-        R.drawable.img_content_17_title,
-        R.drawable.img_content_18_title,
-        R.drawable.img_content_19_title
-    )
-
-    private val descriptionList = listOf(
-        "레전드의 귀환을 경배하라!",
-        "천재적 작품 감상하면 캐시!",
-        "이세계에 떨어진 무림고수?",
-        "지금 바로 캐시 선물 받아가세요!",
-        "왕년에 주먹 쓴 놈이 돌아왔다"
-    )
-
-    private val freeTypeList = listOf(
-        R.drawable.ic_free_3_days_waiting,
-        null,
-        null,
-        null,
-        R.drawable.ic_free_serial
-    )
-
-    private val upList = listOf(
-        R.drawable.ic_up,
-        null,
-        null,
-        null,
-        null
-    )
-
-    private val genreList = listOf(
-        "웹소설·판타지",
-        null,
-        null,
-        null,
-        "웹툰·액션·349.8만"
-    )
-
-    private val pageList = listOf(
-        "1/5",
-        "2/5",
-        "3/5",
-        "4/5",
-        "5/5"
-    )
+    private val homeAdapter by lazy {
+        HomeAdapter { content ->
+//            val intent = Intent(this, ContentDetailActivity::class.java)
+//            intent.putExtra(EXTRA_CONTENT, content)
+//            startActivity(intent)
+            Toast.makeText(this, content.title, Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 50, systemBars.right, 0)
@@ -98,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setLayout() {
         setViewPager2()
+        initRecyclerView()
         setToolbar()
         setTopBanner()
         setBottomNavigation()
@@ -105,39 +61,58 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setViewPager2() {
-        val viewPager = findViewById<ViewPager2>(R.id.view_pager)
-        val adapter = ViewPagerAdapter(thumbnailImageList, TitleList, descriptionList, freeTypeList, upList, genreList, pageList)
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = ViewPagerAdapter(TopContentManager.getList())
+//
+//        val viewPager = findViewById<ViewPager2>(R.id.view_pager)
+//        val adapter = ViewPagerAdapter(TopContentManager.getList())
+//        viewPager.adapter = adapter
         //viewPager.setCurrentItem(Int.MAX_VALUE / 2, false) // 중앙으로 설정
     }
 
+    private fun initRecyclerView() {
+        binding.rvContentList.apply {
+            adapter = homeAdapter
+            homeAdapter.submitList(ContentManager.getList().toList())
+        }
+    }
+
     private fun setToolbar() {
-        val toolbar = findViewById<View>(R.id.layout_toolbar)
-        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+        binding.layoutToolbar.ivToolbarSearch.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
             startActivity(intent)
         }
+
+
+//        val toolbar = findViewById<View>(R.id.layout_toolbar)
+//        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
+//            startActivity(intent)
+//        }
     }
 
     private fun setTopBanner() {
-        val topBanner = findViewById<View>(R.id.view_top_banner)
-        topBanner.setOnClickListener {
+        binding.viewTopBanner.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
             startActivity(intent)
         }
+
+//        val topBanner = findViewById<View>(R.id.view_top_banner)
+//        topBanner.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
+//            startActivity(intent)
+//        }
     }
 
     private fun setBottomNavigation() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
-        bottomNavigationView.setOnItemSelectedListener {
+        binding.bottomNavigationMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_home -> {
-                    if (bottomNavigationView.selectedItemId == R.id.navigation_home) return@setOnItemSelectedListener true
+                    if (binding.bottomNavigationMain.selectedItemId == R.id.navigation_home) return@setOnItemSelectedListener true
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.navigation_shortcut -> {
-                    if (bottomNavigationView.selectedItemId == R.id.navigation_shortcut) return@setOnItemSelectedListener true
+                    if (binding.bottomNavigationMain.selectedItemId == R.id.navigation_shortcut) return@setOnItemSelectedListener true
                     val intent = Intent(this, ShortcutActivity::class.java)
                     startActivity(intent)
                 }
@@ -148,13 +123,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setChip() {
         val chipData = intent.getStringExtra(EXTRA_STRING_CHIP) ?: ""
+        val chipGroup = binding.chipGroup
         chipGroup.children.forEach {
-            if ((it as Chip).text == chipData) {
+            val chip = it as Chip
+            if (chip.text == chipData) {
                 it.performClick() // 바로가기에서 넘어온 칩을 클릭한 상태로 설정
                 // 레이아웃이 다 그려지지 않아서 밑에 scrollToChip을 호출하면 chipStart, chipEnd, scrollViewWidth가 0으로 나옴
                 it.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                     override fun onGlobalLayout() {
-                        it.viewTreeObserver.removeOnGlobalLayoutListener(this) // 메모리 누수를 방지하기 위해 (이거 없어도 작동되긴 하는데, 구글링 해보니 width가 0으로 나오는 경우가 있어서 추가함)
+                        // 메모리 누수를 방지하기 위해 (이거 없어도 작동되긴 하는데, 구글링 해보니 위치 정보가 0으로 나오는 경우가 있어서 추가함)
+                        it.viewTreeObserver.removeOnGlobalLayoutListener(this)
                         scrollToChip(it)
                     }
                 })

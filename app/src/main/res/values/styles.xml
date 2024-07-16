@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppToolbar">
+    <style name="AppToolbar" parent="Theme.AppCompat">
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray_350</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomActionBar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:actionBarStyle">@style/AppToolbar</item>
+    </style>
+
+    <style name="CustomTabLayout">
+<!--        <item name="tabIndicatorColor">@color/selector_tab_indicator_color</item>-->
+<!--        <item name="tabIndicatorHeight">2dp</item>-->
+<!--        <item name="tabSelectedTextColor">@color/selector_tab_text_color</item>-->
+<!--        <item name="tabTextColor">@color/selector_tab_text_color</item>-->
+<!--        <item name="tabTextAppearance">@style/AppTextCaption</item>-->
+    </style>
+
+    <style name="CustomTabText">
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 

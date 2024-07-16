@@ -7,21 +7,22 @@ import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.HorizontalScrollView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.jeongu.kakaopageapp.data.ContentManager
 import com.jeongu.kakaopageapp.data.TopContentManager
 import com.jeongu.kakaopageapp.databinding.ActivityMainBinding
+import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
+import com.jeongu.kakaopageapp.ui.home.HomeAdapter
+import com.jeongu.kakaopageapp.ui.home.ViewPagerAdapter
+import com.jeongu.kakaopageapp.ui.shortcut.ShortcutActivity
 
 const val EXTRA_STRING_CHIP = "chip"
+const val EXTRA_CONTENT_ID = "contentId"
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,10 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     private val homeAdapter by lazy {
         HomeAdapter { content ->
-//            val intent = Intent(this, ContentDetailActivity::class.java)
-//            intent.putExtra(EXTRA_CONTENT, content)
-//            startActivity(intent)
-            Toast.makeText(this, content.title, Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ContentDetailActivity::class.java)
+            intent.putExtra(EXTRA_CONTENT_ID, content.id)
+            startActivity(intent)
         }
     }
 

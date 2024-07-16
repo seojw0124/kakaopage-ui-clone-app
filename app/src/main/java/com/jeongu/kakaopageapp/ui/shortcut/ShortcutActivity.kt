@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp
+package com.jeongu.kakaopageapp.ui.shortcut
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +9,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jeongu.kakaopageapp.EXTRA_STRING_CHIP
+import com.jeongu.kakaopageapp.MainActivity
+import com.jeongu.kakaopageapp.R
 
 class ShortcutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_shortcut)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.shortcut)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 50, systemBars.right, 0)
             insets

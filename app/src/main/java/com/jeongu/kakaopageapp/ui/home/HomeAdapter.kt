@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp
+package com.jeongu.kakaopageapp.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jeongu.kakaopageapp.data.GridContentInfo
 import com.jeongu.kakaopageapp.databinding.ItemGridContentBinding
 
-class HomeAdapter(private val onClick: (GridContentInfo) -> Unit) : ListAdapter<GridContentInfo, HomeAdapter.ContentViewHolder>(ContentDiffCallback()) {
+class HomeAdapter(private val onClick: (GridContentInfo) -> Unit) : ListAdapter<GridContentInfo, HomeAdapter.ContentViewHolder>(
+    ContentDiffCallback()
+) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {
-        val binding = ItemGridContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemGridContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ContentViewHolder(binding)
     }
 

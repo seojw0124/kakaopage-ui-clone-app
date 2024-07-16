@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.androidx.viewpager2)
+    implementation (libs.glide)
+    implementation (libs.glide.transformations)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

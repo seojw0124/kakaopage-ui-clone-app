@@ -1,5 +1,6 @@
 package com.jeongu.kakaopageapp.ui.contentdetail
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +16,7 @@ class EpisodeListAdapter() : ListAdapter<EpisodeInfo, EpisodeListAdapter.Episode
     EpisodeDiffCallback()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
-        val binding =
-            ItemContentEpisodeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemContentEpisodeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return EpisodeViewHolder(binding)
     }
 
@@ -28,18 +28,29 @@ class EpisodeListAdapter() : ListAdapter<EpisodeInfo, EpisodeListAdapter.Episode
 
         fun bind(episode: EpisodeInfo) {
             with(binding) {
-                Glide.with(ivEpisodeThumbnailImage)
-                    .load(episode.thumbnailImage)
-                    .into(ivEpisodeThumbnailImage)
+                ivEpisodeThumbnailImage.setImageResource(episode.thumbnailImage)
                 tvEpisodeTitle.text = episode.title
                 tvEpisodeDate.text = episode.date
                 tvEpisodePage.text = itemView.context.getString(R.string.format_episode_page, episode.page)
+
                 if (episode.isFree) {
                     tvEpisodeFree.visibility = View.VISIBLE
                     ivEpisodeClock.visibility = View.GONE
                 } else {
                     tvEpisodeFree.visibility = View.GONE
                     ivEpisodeClock.visibility = View.VISIBLE
+                }
+                if (episode.isViewed) {
+                    viewEpisodeAlphaArea.visibility = View.VISIBLE
+
+                    if (episode.isLastViewed) {
+                        ivEpisodeFoldedPaper.visibility = View.VISIBLE
+                    } else {
+                        ivEpisodeFoldedPaper.visibility = View.GONE
+                    }
+                } else {
+                    viewEpisodeAlphaArea.visibility = View.GONE
+                    ivEpisodeFoldedPaper.visibility = View.GONE
                 }
             }
         }

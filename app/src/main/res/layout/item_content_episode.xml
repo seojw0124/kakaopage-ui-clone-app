@@ -60,7 +60,7 @@
         app:layout_constraintStart_toEndOf="@id/iv_divider_vertical_episode_date"
         app:layout_constraintTop_toTopOf="@id/iv_divider_vertical_episode_date"
         tools:text="64쪽" />
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_free_area"
         android:layout_width="wrap_content"
@@ -79,8 +79,8 @@
             android:textSize="10sp"
             android:textStyle="bold"
             android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
         <ImageView
@@ -90,10 +90,33 @@
             android:layout_marginBottom="12dp"
             android:src="@drawable/ic_clock"
             android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view_episode_alpha_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_episode_image_alpha_6dp"
+        android:alpha="0.1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/iv_episode_thumbnail_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/iv_episode_thumbnail_image"
+        app:layout_constraintTop_toTopOf="@id/iv_episode_thumbnail_image"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_episode_folded_paper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_folded_paper"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

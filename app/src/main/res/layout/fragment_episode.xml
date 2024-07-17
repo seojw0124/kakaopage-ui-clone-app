@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="11dp"
     tools:context=".ui.contentdetail.EpisodeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <View
+        android:id="@+id/view_content_detail_top_banner_area"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:background="@drawable/bg_gray150_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:src="@drawable/img_ad_01"
+        app:layout_constraintBottom_toBottomOf="@id/view_content_detail_top_banner_area"
+        app:layout_constraintEnd_toEndOf="@id/view_content_detail_top_banner_area"
+        app:layout_constraintStart_toStartOf="@id/view_content_detail_top_banner_area"
+        app:layout_constraintTop_toTopOf="@id/view_content_detail_top_banner_area" />
+
+    <View
+        android:id="@+id/view_content_detail_ticket_area"
+        android:layout_width="0dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_gray180_8dp"
+        app:layout_constraintEnd_toEndOf="@id/view_content_detail_top_banner_area"
+        app:layout_constraintStart_toStartOf="@id/view_content_detail_top_banner_area"
+        app:layout_constraintTop_toBottomOf="@id/view_content_detail_top_banner_area" />
+
+    <TextView
+        android:id="@+id/tv_label_content_detail_rental_ticket"
+        style="@style/AppTextLabel.S13.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="대여권"
+        app:layout_constraintBottom_toTopOf="@id/divder_content_detail_ticket"
+        app:layout_constraintStart_toStartOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintTop_toTopOf="@id/view_content_detail_ticket_area" />
+
+    <TextView
+        android:id="@+id/tv_content_detail_rental_ticket_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_rental_ticket"
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_rental_ticket"
+        tools:text="0장" />
+
+    <ImageView
+        android:id="@+id/iv_divider_vertical_content_detail_ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_divider_ticket"
+        app:layout_constraintBottom_toBottomOf="@id/tv_content_detail_rental_ticket_count"
+        app:layout_constraintStart_toEndOf="@id/tv_content_detail_rental_ticket_count" />
+
+    <TextView
+        android:id="@+id/tv_label_content_detail_permanent_ticket"
+        style="@style/AppTextLabel.S13.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="대여권"
+        app:layout_constraintBottom_toTopOf="@id/divder_content_detail_ticket"
+        app:layout_constraintStart_toEndOf="@id/iv_divider_vertical_content_detail_ticket"
+        app:layout_constraintTop_toTopOf="@id/view_content_detail_ticket_area" />
+
+    <TextView
+        android:id="@+id/tv_content_detail_permanent_ticket_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_permanent_ticket"
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_permanent_ticket"
+        tools:text="0장" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:src="@drawable/ic_arrow_ticket"
+        app:layout_constraintBottom_toBottomOf="@id/tv_content_detail_permanent_ticket_count"
+        app:layout_constraintStart_toEndOf="@id/tv_content_detail_permanent_ticket_count"
+        app:layout_constraintTop_toTopOf="@+id/tv_content_detail_permanent_ticket_count" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg_yellow_100dp"
+        android:gravity="center_vertical"
+        android:text="이용권 충전"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/divder_content_detail_ticket"
+        app:layout_constraintEnd_toEndOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintTop_toTopOf="@id/view_content_detail_ticket_area" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divder_content_detail_ticket"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/gray_200"
+        app:dividerInsetEnd="15dp"
+        app:dividerInsetStart="15dp"
+        app:dividerThickness="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintEnd_toEndOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintStart_toStartOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintTop_toTopOf="@id/view_content_detail_ticket_area" />
+
+    <TextView
+        android:id="@+id/tv_label_content_detail_free_ticket"
+        style="@style/AppTextLabel.S13.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="3시간 기다무 대여권"
+        app:layout_constraintBottom_toBottomOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintStart_toStartOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintTop_toBottomOf="@id/divder_content_detail_ticket" />
+
+    <TextView
+        android:id="@+id/tv_content_detail_free_ticket_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_free_ticket"
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_free_ticket"
+        tools:text="1장" />
+
+    <TextView
+        android:id="@+id/tv_label_content_detail_usable"
+        style="@style/AppTextLabel.S13.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
+        android:text="지금 사용가능"
+        app:layout_constraintBottom_toBottomOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintEnd_toEndOf="@id/view_content_detail_ticket_area"
+        app:layout_constraintTop_toBottomOf="@id/divder_content_detail_ticket" />
+
+    <TextView
+        android:id="@+id/tv_content_detail_episode_count"
+        style="@style/AppTextLabel.S12.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="22dp"
+        android:text="전체 203"
+        app:layout_constraintEnd_toStartOf="@+id/iv_content_detail_purchase"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_content_detail_ticket_area" />
+
+    <ImageView
+        android:id="@+id/iv_content_detail_purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_purchase_outlined"
+        app:layout_constraintBottom_toBottomOf="@id/tv_label_content_detail_purchased_episode"
+        app:layout_constraintEnd_toStartOf="@id/tv_label_content_detail_purchased_episode"
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_purchased_episode" />
+
+    <TextView
+        android:id="@+id/tv_label_content_detail_purchased_episode"
+        style="@style/AppTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="구매회차"
+        app:layout_constraintEnd_toStartOf="@id/iv_content_detail_sort"
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_sort" />
+
+    <ImageView
+        android:id="@+id/iv_content_detail_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_sort"
+        app:layout_constraintBottom_toBottomOf="@id/tv_label_content_detail_sort"
+        app:layout_constraintEnd_toStartOf="@id/tv_label_content_detail_sort"
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_sort" />
+
+    <TextView
+        android:id="@+id/tv_label_content_detail_sort"
+        style="@style/AppTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="6dp"
+        android:text="최신순"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_content_detail_ticket_area" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_episode_list"
+        android:nestedScrollingEnabled="false"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_content_detail_episode_count"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_content_episode" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

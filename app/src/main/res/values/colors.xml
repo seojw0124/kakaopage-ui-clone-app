@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black_a10">#1A000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray_100">#f6f6f6</color>
     <color name="gray_150">#eeeeee</color>
+    <color name="gray_180">#ECEBEB</color>
     <color name="gray_200">#d7d7d7</color>
     <color name="gray_250">#bcbcbc</color>
     <color name="gray_350">#979595</color>
@@ -15,6 +17,7 @@
     <color name="gray_800">#2b2b2b</color>
     <color name="gray_900">#222222</color>
     <color name="yellow">#FFE500</color>
+    <color name="yellow_500">#FAD200</color>
     <color name="orange">#F09605</color>
     <color name="green_400">#009270</color>
     <color name="green_500">#009266</color>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/iv_episode_thumbnail_image"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/bg_episode_image_6dp"
+        android:clipToOutline="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_content_02_episode_01" />
+
+    <TextView
+        android:id="@+id/tv_episode_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:textColor="@color/gray_900"
+        app:layout_constraintBottom_toTopOf="@id/tv_episode_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_episode_thumbnail_image"
+        app:layout_constraintTop_toTopOf="@id/iv_episode_thumbnail_image"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="나 혼자만 레벨업 동영상 프롤로그" />
+
+    <TextView
+        android:id="@+id/tv_episode_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/gray_400"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@id/layout_free_area"
+        app:layout_constraintStart_toStartOf="@id/tv_episode_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_episode_title"
+        tools:text="18.03.04" />
+
+    <ImageView
+        android:id="@+id/iv_divider_vertical_episode_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_divider_ticket"
+        app:layout_constraintStart_toEndOf="@id/tv_episode_date"
+        app:layout_constraintTop_toTopOf="@id/tv_episode_date" />
+
+    <TextView
+        android:id="@+id/tv_episode_page"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_400"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_episode_date"
+        app:layout_constraintStart_toEndOf="@id/iv_divider_vertical_episode_date"
+        app:layout_constraintTop_toTopOf="@id/iv_divider_vertical_episode_date"
+        tools:text="64쪽" />
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_free_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_episode_date"
+        app:layout_constraintTop_toBottomOf="@id/tv_episode_date">
+
+        <TextView
+            android:id="@+id/tv_episode_free"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_episode_free_5dp"
+            android:text="무료"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/iv_episode_clock"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/ic_clock"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

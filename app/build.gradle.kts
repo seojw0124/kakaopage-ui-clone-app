@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("kotlin-kapt")
 }
 
 android {
@@ -47,8 +48,11 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.androidx.viewpager2)
-    implementation (libs.glide)
-    implementation (libs.glide.transformations)
+
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+
+    //implementation (libs.glide.transformations)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

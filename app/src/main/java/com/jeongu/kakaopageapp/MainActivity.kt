@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setToolbar() {
-        binding.layoutToolbar.ivToolbarSearch.setOnClickListener {
+        binding.layoutToolbar.ivToolbarCash.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
             startActivity(intent)
         }

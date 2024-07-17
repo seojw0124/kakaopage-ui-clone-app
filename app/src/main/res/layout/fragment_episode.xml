@@ -51,10 +51,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:text="0장"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_rental_ticket"
-        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_rental_ticket"
-        tools:text="0장" />
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_rental_ticket" />
 
     <ImageView
         android:id="@+id/iv_divider_vertical_content_detail_ticket"
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="대여권"
+        android:text="소장권"
         app:layout_constraintBottom_toTopOf="@id/divder_content_detail_ticket"
         app:layout_constraintStart_toEndOf="@id/iv_divider_vertical_content_detail_ticket"
         app:layout_constraintTop_toTopOf="@id/view_content_detail_ticket_area" />
@@ -81,10 +81,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:text="0장"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_permanent_ticket"
-        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_permanent_ticket"
-        tools:text="0장" />
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_permanent_ticket" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -138,10 +138,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:text="1장"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_free_ticket"
-        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_free_ticket"
-        tools:text="1장" />
+        app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_free_ticket" />
 
     <TextView
         android:id="@+id/tv_label_content_detail_usable"
@@ -209,10 +209,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_episode_list"
-        android:nestedScrollingEnabled="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
+        android:nestedScrollingEnabled="false"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"

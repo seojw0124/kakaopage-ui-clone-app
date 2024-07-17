@@ -1,94 +1,172 @@
-//package com.jeongu.kakaopageapp.ui.home
-//
-//import android.view.LayoutInflater
-//import android.view.ViewGroup
-//import androidx.recyclerview.widget.RecyclerView
-//import com.jeongu.kakaopageapp.data.HotNowGridContent
-//import com.jeongu.kakaopageapp.data.HotNowInfo
-//import com.jeongu.kakaopageapp.data.HotNowLinearContent
-//import com.jeongu.kakaopageapp.data.HotNowSectionTitle
-//import com.jeongu.kakaopageapp.data.HotNowViewPager
-//import com.jeongu.kakaopageapp.databinding.ItemImageSlideBinding
-//
-//private const val VIEW_TYPE_VIEW_PAGER = 0
-//private const val VIEW_TYPE_SECTION_TITLE = 1
-//private const val VIEW_TYPE_GRID_CONTENT = 2
-//private const val VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT = 3
-//
-//class HotNowContentListAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-//
-//    private val items = mutableListOf<HotNowInfo>()
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-//        return when (viewType) {
-//            VIEW_TYPE_VIEW_PAGER -> HotNowViewPagerViewHolder.from(parent)
-//            VIEW_TYPE_SECTION_TITLE -> HotNowSectionTitleViewHolder.from(parent)
-//            VIEW_TYPE_GRID_CONTENT -> HotNowGridViewHolder.from(parent)
-//            else -> HotNowLinearViewHolder.from(parent)
-//        }
-//    }
-//
-//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        when (holder) {
-//            is HotNowViewPagerViewHolder -> {
-//                val item = items[position] as HotNowViewPager
-//                holder.bind(item)
-//            }
-//            is HotNowSectionTitleViewHolder -> {
-//                val item = items[position] as HotNowSectionTitle
-//                holder.bind(item)
-//            }
-//            is HotNowGridViewHolder -> {
-//                val item = items[position] as HotNowGridContent
-//                holder.bind(item)
-//            }
-//            is HotNowLinearViewHolder -> {
-//                val item = items[position] as HotNowLinearContent
-//                holder.bind(item)
-//            }
-//        }
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return items.size
-//    }
-//
-//    override fun getItemViewType(position: Int): Int {
-//        return when (items[position]) {
-//            is HotNowViewPager -> VIEW_TYPE_VIEW_PAGER
-//            is HotNowSectionTitle -> VIEW_TYPE_SECTION_TITLE
-//            is HotNowGridContent -> VIEW_TYPE_GRID_CONTENT
-//            is HotNowLinearContent -> VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT
-//        }
-//    }
-//
-//    private fun initData() {
-//        update(HotNowManager.getList())
-//    }
-//
-//    private fun update(hotNowItems: List<HotNowInfo>) {
-//        items.clear()
-//        items.addAll(hotNowItems)
-//        notifyDataSetChanged()
-//    }
-//
-//    class HotNowViewPagerViewHolder(private val binding: ItemImageSlideBinding) : RecyclerView.ViewHolder(binding.root) {
-//        private val viewPagerAdapter = ViewPagerAdapter()
-//
-//        init {
-//            binding.viewPager.adapter = viewPagerAdapter
-//        }
-//
-//        companion object {
-//            fun from(parent: ViewGroup): HotNowViewPagerViewHolder {
-//                return HotNowViewPagerViewHolder(
-//                    ItemImageSlideBinding.inflate(
-//                        LayoutInflater.from(parent.context),
-//                        parent,
-//                        false
-//                    )
-//                )
-//            }
-//        }
-//    }
-//}
+package com.jeongu.kakaopageapp.ui.home
+
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
+import com.jeongu.kakaopageapp.data.HotNowGridContent
+import com.jeongu.kakaopageapp.data.HotNowInfo
+import com.jeongu.kakaopageapp.data.HotNowLinearContent
+import com.jeongu.kakaopageapp.data.HotNowManager
+import com.jeongu.kakaopageapp.data.HotNowSectionTitle
+import com.jeongu.kakaopageapp.data.HotNowViewPager
+import com.jeongu.kakaopageapp.databinding.ItemHotNowGridContentBinding
+import com.jeongu.kakaopageapp.databinding.ItemHotNowLinearContentBinding
+import com.jeongu.kakaopageapp.databinding.ItemHotNowSectionTitleBinding
+import com.jeongu.kakaopageapp.databinding.ItemHotNowViewPagerBinding
+import com.jeongu.kakaopageapp.databinding.ItemImageSlideBinding
+import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
+
+private const val VIEW_TYPE_VIEW_PAGER = 0
+private const val VIEW_TYPE_SECTION_TITLE = 1
+private const val VIEW_TYPE_GRID_CONTENT = 2
+private const val VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT = 3
+
+class HotNowContentListAdapter(private val items: List<HotNowInfo>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            VIEW_TYPE_VIEW_PAGER -> HotNowViewPagerViewHolder.from(parent)
+            VIEW_TYPE_SECTION_TITLE -> HotNowSectionTitleViewHolder.from(parent)
+            VIEW_TYPE_GRID_CONTENT -> HotNowGridViewHolder.from(parent)
+            VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT -> HotNowLinearViewHolder.from(parent)
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is HotNowViewPagerViewHolder -> {
+                val item = items[position] as HotNowViewPager
+                holder.bind(item)
+            }
+            is HotNowSectionTitleViewHolder -> {
+                val item = items[position] as HotNowSectionTitle
+                holder.bind(item)
+            }
+            is HotNowGridViewHolder -> {
+                val item = items[position] as HotNowGridContent
+                holder.bind(item)
+            }
+            is HotNowLinearViewHolder -> {
+                val item = items[position] as HotNowLinearContent
+                holder.bind(item)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return items.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when (items[position]) {
+            is HotNowViewPager -> VIEW_TYPE_VIEW_PAGER
+            is HotNowSectionTitle -> VIEW_TYPE_SECTION_TITLE
+            is HotNowGridContent -> VIEW_TYPE_GRID_CONTENT
+            is HotNowLinearContent -> VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT
+        }
+    }
+
+    class HotNowViewPagerViewHolder(private val binding: ItemHotNowViewPagerBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val viewPagerAdapter = ViewPagerAdapter()
+
+        init {
+            binding.viewpagerHotNow.adapter = viewPagerAdapter
+        }
+
+        fun bind(item: HotNowViewPager) {
+            viewPagerAdapter.add(item.viewPagerItems)
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): HotNowViewPagerViewHolder {
+                return HotNowViewPagerViewHolder(
+                    ItemHotNowViewPagerBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+    }
+
+    class HotNowSectionTitleViewHolder(private val binding: ItemHotNowSectionTitleBinding): RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: HotNowSectionTitle) {
+            binding.tvSectionTitle.text = item.title
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): HotNowSectionTitleViewHolder {
+                return HotNowSectionTitleViewHolder(
+                    ItemHotNowSectionTitleBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+    }
+
+    class HotNowGridViewHolder(private val binding: ItemHotNowGridContentBinding): RecyclerView.ViewHolder(binding.root) {
+
+        private val gridContentAdapter = GridContentListAdapter { content ->
+            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
+            intent.putExtra(EXTRA_CONTENT_ID, content.id)
+            binding.root.context.startActivity(intent)
+        }
+
+        init {
+            binding.rvHotNowGridContent.adapter = gridContentAdapter
+        }
+
+        fun bind(item: HotNowGridContent) {
+            gridContentAdapter.submitList(item.gridItems)
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): HotNowGridViewHolder {
+                return HotNowGridViewHolder(
+                    ItemHotNowGridContentBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+    }
+
+    class HotNowLinearViewHolder(private val binding: ItemHotNowLinearContentBinding): RecyclerView.ViewHolder(binding.root) {
+
+        private val linearContentAdapter = LinearContentListAdapter { content ->
+            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
+            intent.putExtra(EXTRA_CONTENT_ID, content.id)
+            binding.root.context.startActivity(intent)
+        }
+
+        init {
+            binding.rvHotNowLinearContent.adapter = linearContentAdapter
+        }
+
+        fun bind(item: HotNowLinearContent) {
+            linearContentAdapter.submitList(item.linearItems)
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): HotNowLinearViewHolder {
+                return HotNowLinearViewHolder(
+                    ItemHotNowLinearContentBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+    }
+}

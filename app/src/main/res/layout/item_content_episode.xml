@@ -15,7 +15,7 @@
         android:clipToOutline="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/img_content_02_episode_01" />
+        tools:src="@drawable/img_content_02_ep_prolog" />
 
     <TextView
         android:id="@+id/tv_episode_title"

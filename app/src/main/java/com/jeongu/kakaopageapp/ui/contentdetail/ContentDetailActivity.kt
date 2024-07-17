@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.databinding.ActivityContentDetailBinding
-//import jp.wasabeef.glide.transformations.BlurTransformation
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 class ContentDetailActivity : AppCompatActivity() {
 
@@ -42,7 +42,7 @@ class ContentDetailActivity : AppCompatActivity() {
     private fun setBlurImage() {
         with(binding) {
             Glide.with(ivContentDetailBlurImage).load(R.drawable.img_content_02)
-                //.apply(RequestOptions.bitmapTransform(BlurTransformation(90, 3)))
+                .apply(RequestOptions.bitmapTransform(BlurTransformation(90, 3)))
                 .into(ivContentDetailBlurImage)
         }
     }

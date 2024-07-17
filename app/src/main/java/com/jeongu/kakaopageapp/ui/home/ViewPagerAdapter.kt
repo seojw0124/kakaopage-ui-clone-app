@@ -5,16 +5,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jeongu.kakaopageapp.data.TopContentInfo
-import com.jeongu.kakaopageapp.databinding.Content01Binding
+import com.jeongu.kakaopageapp.databinding.ItemImageSlideBinding
 
-class ViewPagerAdapter(
-    private val items: List<TopContentInfo>,
-) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
+class ViewPagerAdapter() : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: Content01Binding) : RecyclerView.ViewHolder(binding.root)
+    private val items = mutableListOf<TopContentInfo>()
+
+    fun add(items: List<TopContentInfo>) {
+        this.items.clear()
+        this.items.addAll(items)
+    }
+
+    class ViewHolder(val binding: ItemImageSlideBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = Content01Binding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemImageSlideBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

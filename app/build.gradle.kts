@@ -52,7 +52,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
 
-    //implementation (libs.glide.transformations)
+    implementation (libs.glide.transformations)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

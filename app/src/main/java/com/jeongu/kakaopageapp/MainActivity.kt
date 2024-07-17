@@ -17,7 +17,7 @@ import com.jeongu.kakaopageapp.data.ContentManager
 import com.jeongu.kakaopageapp.data.TopContentManager
 import com.jeongu.kakaopageapp.databinding.ActivityMainBinding
 import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
-import com.jeongu.kakaopageapp.ui.home.HomeAdapter
+import com.jeongu.kakaopageapp.ui.home.GridContentListAdapter
 import com.jeongu.kakaopageapp.ui.home.ViewPagerAdapter
 import com.jeongu.kakaopageapp.ui.shortcut.ShortcutActivity
 
@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     //private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
     private var previousChipId: Int = View.NO_ID
 
-    private val homeAdapter by lazy {
-        HomeAdapter { content ->
+    private val gridContentListAdapter by lazy {
+        GridContentListAdapter { content ->
             val intent = Intent(this, ContentDetailActivity::class.java)
             intent.putExtra(EXTRA_CONTENT_ID, content.id)
             startActivity(intent)
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setViewPager2() {
-        binding.viewPager.adapter = ViewPagerAdapter(TopContentManager.getList())
+        //binding.viewPager.adapter = ViewPagerAdapter(TopContentManager.getList())
 //
 //        val viewPager = findViewById<ViewPager2>(R.id.view_pager)
 //        val adapter = ViewPagerAdapter(TopContentManager.getList())
@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         binding.rvContentList.apply {
-            adapter = homeAdapter
-            homeAdapter.submitList(ContentManager.getList().toList())
+            adapter = gridContentListAdapter
+            gridContentListAdapter.submitList(ContentManager.getList().toList())
         }
     }
 

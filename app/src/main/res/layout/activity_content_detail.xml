@@ -137,29 +137,7 @@
                 app:tabRippleColor="@null"
                 app:tabSelectedTextColor="@color/black"
                 app:tabTextAppearance="@style/CustomTabText"
-                app:tabTextColor="@color/gray_300">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="회차" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="정보" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="소식" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="댓글" />
-
-            </com.google.android.material.tabs.TabLayout>
+                app:tabTextColor="@color/gray_300" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager_content_detail"

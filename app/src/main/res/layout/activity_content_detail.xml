@@ -26,7 +26,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@color/gray_100" />
+                tools:src="@drawable/img_content_02" />
+
+            <!-- Gradient overlay -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="@id/iv_content_detail_blur_image"
+                app:layout_constraintTop_toTopOf="@id/iv_content_detail_blur_image"
+                app:layout_constraintEnd_toEndOf="@id/iv_content_detail_blur_image"
+                app:layout_constraintBottom_toBottomOf="@id/iv_content_detail_blur_image"
+                android:background="@drawable/gradient_overlay" />
 
             <ImageView
                 android:id="@+id/iv_content_detail_thumbnail_image"
@@ -39,7 +49,7 @@
                 app:layout_constraintEnd_toEndOf="@id/iv_content_detail_blur_image"
                 app:layout_constraintStart_toStartOf="@id/iv_content_detail_blur_image"
                 app:layout_constraintTop_toTopOf="@id/iv_content_detail_blur_image"
-                tools:src="@drawable/img_content_12" />
+                tools:src="@drawable/img_content_10" />
 
             <TextView
                 android:id="@+id/tv_content_detail_title"
@@ -113,7 +123,7 @@
                 android:textSize="12sp"
                 app:drawableLeftCompat="@drawable/ic_rating_star"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_content_detail_genre"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/tv_content_detail_creator"
                 app:layout_constraintStart_toEndOf="@id/tv_content_detail_views"
                 app:layout_constraintTop_toTopOf="@id/tv_content_detail_genre"
                 tools:text="10.0" />
@@ -137,29 +147,7 @@
                 app:tabRippleColor="@null"
                 app:tabSelectedTextColor="@color/black"
                 app:tabTextAppearance="@style/CustomTabText"
-                app:tabTextColor="@color/gray_300">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="회차" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="정보" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="소식" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="댓글" />
-
-            </com.google.android.material.tabs.TabLayout>
+                app:tabTextColor="@color/gray_300" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager_content_detail"
@@ -173,17 +161,34 @@
 
     </androidx.core.widget.NestedScrollView>
 
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/transparent">-->
+
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/toolbar_home"-->
+<!--            style="@style/AppToolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            app:menu="@menu/toolbar_menu"-->
+<!--            app:navigationIcon="@drawable/ic_arrow_back" />-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_content_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_home"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_content_detail"
             style="@style/AppToolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            app:title="@string/app_name" />
+            app:menu="@menu/toolbar_menu"
+            app:navigationIcon="@drawable/ic_arrow_back" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

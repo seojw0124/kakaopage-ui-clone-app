@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jeongu.kakaopageapp.data.GridContentInfo
 import com.jeongu.kakaopageapp.databinding.ItemGridContentBinding
 
-class HomeAdapter(private val onClick: (GridContentInfo) -> Unit) : ListAdapter<GridContentInfo, HomeAdapter.ContentViewHolder>(
+class GridContentListAdapter(private val onClick: (GridContentInfo) -> Unit) : ListAdapter<GridContentInfo, GridContentListAdapter.ContentViewHolder>(
     ContentDiffCallback()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {

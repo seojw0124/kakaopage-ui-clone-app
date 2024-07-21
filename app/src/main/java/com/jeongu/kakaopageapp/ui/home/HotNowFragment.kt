@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
 import com.jeongu.kakaopageapp.data.source.HomeContentRepository
+import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.data.source.local.HotNowManager
 import com.jeongu.kakaopageapp.databinding.FragmentHotNowBinding
 
@@ -15,11 +17,17 @@ class HotNowFragment : Fragment() {
 
     private var _binding: FragmentHotNowBinding? = null
     private val binding get() = _binding!!
-    private val repository = HomeContentRepository()
 
+    private val contentRepository = HomeContentRepositoryImpl(CacheDataSource.getCacheDataSource())
     private val hotNowContentListAdapter by lazy {
-        HotNowContentListAdapter(repository.getHotNowContentList())
+        HotNowContentListAdapter(contentRepository.getHotNowContentList())
     }
+
+//    private val repository = HomeContentRepository()
+//
+//    private val hotNowContentListAdapter by lazy {
+//        HotNowContentListAdapter(repository.getHotNowContentList())
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

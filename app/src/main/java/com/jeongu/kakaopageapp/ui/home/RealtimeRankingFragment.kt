@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
 import com.jeongu.kakaopageapp.data.source.HomeContentRepository
+import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.databinding.FragmentRealtimeRankingBinding
 
 class RealtimeRankingFragment : Fragment() {
@@ -16,10 +18,15 @@ class RealtimeRankingFragment : Fragment() {
     private var _binding: FragmentRealtimeRankingBinding? = null
     private val binding get() = _binding!!
 
-    private val repository = HomeContentRepository()
+    private val contentRepository = HomeContentRepositoryImpl(CacheDataSource.getCacheDataSource())
     private val realtimeRankingListAdapter by lazy {
-        HotNowContentListAdapter(repository.getRealtimeRankingContentList())
+        HotNowContentListAdapter(contentRepository.getRealtimeRankingContentList())
     }
+
+//    private val repository = HomeContentRepository()
+//    private val realtimeRankingListAdapter by lazy {
+//        HotNowContentListAdapter(repository.getRealtimeRankingContentList())
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

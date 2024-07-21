@@ -267,7 +267,7 @@ object HotNowManager {
 
     // 임의로 데이터 필터링
     fun getRealtimeRankingList(): List<HotNowInfo> {
-        // HotNowLinearContent 제외
-        return hotNowContentList.filter { it !is HotNowLinearContent }
+        // HotNowViewPager 제외
+        return hotNowContentList.filter { it !is HotNowViewPager }
     }
 }

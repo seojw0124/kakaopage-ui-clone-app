@@ -8,694 +8,108 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/layout_toolbar"
+        android:id="@+id/layout_toolbar_home"
         layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <HorizontalScrollView
-        android:id="@+id/h_scroll_view_chip"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:checkedChip="@+id/chip_01"
-            app:chipSpacingHorizontal="6dp"
-            app:selectionRequired="true"
-            app:singleLine="true"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_01"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="지금핫한" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_02"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="실시간 랭킹" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_03"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="오늘신작" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_04"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TV속 작품" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_05"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이벤트" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_06"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="남성인기" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_07"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="완결추천" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_08"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="여성인기" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_09"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="브랜드" />
-
-        </com.google.android.material.chip.ChipGroup>
-
-    </HorizontalScrollView>
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container_home"
+        android:name="com.jeongu.kakaopageapp.ui.home.HotNowFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        android:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/h_scroll_view_chip">
+        app:layout_constraintTop_toBottomOf="@id/layout_toolbar_home" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--    <HorizontalScrollView-->
+<!--        android:id="@+id/h_scroll_view_chip"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:scrollbars="none"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/layout_toolbar_home">-->
 
-            <View
-                android:id="@+id/view_top_banner"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_gray150_8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/chip_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:checkedChip="@+id/chip_01"-->
+<!--            app:chipSpacingHorizontal="6dp"-->
+<!--            app:selectionRequired="true"-->
+<!--            app:singleLine="true"-->
+<!--            app:singleSelection="true">-->
 
-            <ImageView
-                android:id="@+id/iv_top_banner"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="10dp"
-                android:contentDescription="@string/description_top_banner_image"
-                android:src="@drawable/img_top_banner"
-                app:layout_constraintBottom_toBottomOf="@id/view_top_banner"
-                app:layout_constraintStart_toStartOf="@id/view_top_banner"
-                app:layout_constraintTop_toTopOf="@id/view_top_banner" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_01"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:text="지금핫한" />-->
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="전원 캐시선물, 오늘이 마지막!"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/iv_top_banner"
-                app:layout_constraintStart_toEndOf="@id/iv_top_banner"
-                app:layout_constraintTop_toTopOf="@id/iv_top_banner" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_02"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="실시간 랭킹" />-->
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_arrow_top_banner"
-                app:layout_constraintBottom_toBottomOf="@id/view_top_banner"
-                app:layout_constraintEnd_toEndOf="@id/view_top_banner"
-                app:layout_constraintTop_toTopOf="@id/view_top_banner" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_03"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="오늘신작" />-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_hot_now_content_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_top_banner"
-                tools:listitem="@layout/item_hot_now_grid_content" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_04"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="TV속 작품" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_05"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="이벤트" />-->
 
-    </androidx.core.widget.NestedScrollView>
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_06"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="남성인기" />-->
 
-    <!--    <androidx.core.widget.NestedScrollView-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:fillViewport="true"-->
-    <!--        android:scrollbars="none"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_main"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/h_scroll_view_chip">-->
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_07"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="완결추천" />-->
 
-    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content">-->
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_08"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="여성인기" />-->
 
-    <!--            <View-->
-    <!--                android:id="@+id/view_top_banner"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="44dp"-->
-    <!--                android:layout_marginStart="10dp"-->
-    <!--                android:layout_marginTop="10dp"-->
-    <!--                android:layout_marginEnd="10dp"-->
-    <!--                android:background="@drawable/bg_gray150_8dp"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_09"-->
+<!--                style="@style/CustomChipStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:text="브랜드" />-->
 
-    <!--            <ImageView-->
-    <!--                android:id="@+id/iv_top_banner"-->
-    <!--                android:layout_width="32dp"-->
-    <!--                android:layout_height="32dp"-->
-    <!--                android:layout_marginStart="10dp"-->
-    <!--                android:contentDescription="@string/description_top_banner_image"-->
-    <!--                android:src="@drawable/img_top_banner"-->
-    <!--                app:layout_constraintBottom_toBottomOf="@id/view_top_banner"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/view_top_banner"-->
-    <!--                app:layout_constraintTop_toTopOf="@id/view_top_banner" />-->
+<!--        </com.google.android.material.chip.ChipGroup>-->
 
-    <!--            <TextView-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginStart="4dp"-->
-    <!--                android:text="전원 캐시선물, 오늘이 마지막!"-->
-    <!--                android:textColor="@color/black"-->
-    <!--                android:textSize="14sp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                app:layout_constraintBottom_toBottomOf="@id/iv_top_banner"-->
-    <!--                app:layout_constraintStart_toEndOf="@id/iv_top_banner"-->
-    <!--                app:layout_constraintTop_toTopOf="@id/iv_top_banner" />-->
-
-    <!--            <ImageView-->
-    <!--                android:layout_width="24dp"-->
-    <!--                android:layout_height="24dp"-->
-    <!--                android:layout_marginEnd="10dp"-->
-    <!--                android:src="@drawable/ic_arrow_top_banner"-->
-    <!--                app:layout_constraintBottom_toBottomOf="@id/view_top_banner"-->
-    <!--                app:layout_constraintEnd_toEndOf="@id/view_top_banner"-->
-    <!--                app:layout_constraintTop_toTopOf="@id/view_top_banner" />-->
-
-    <!--            <androidx.viewpager2.widget.ViewPager2-->
-    <!--                android:id="@+id/view_pager"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="400dp"-->
-    <!--                android:layout_marginTop="0dp"-->
-    <!--                android:paddingTop="12dp"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/view_top_banner"-->
-    <!--                app:layout_constraintVertical_weight="1" />-->
-
-    <!--            <View-->
-    <!--                android:id="@+id/view_center_banner"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="64dp"-->
-    <!--                android:layout_marginStart="10dp"-->
-    <!--                android:layout_marginTop="4dp"-->
-    <!--                android:layout_marginEnd="10dp"-->
-    <!--                android:background="@drawable/bg_green_8dp"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/view_pager" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/tv_center_banner_title"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginStart="12dp"-->
-    <!--                android:layout_marginTop="13dp"-->
-    <!--                android:text="밀리언 페이지"-->
-    <!--                android:textColor="@color/white"-->
-    <!--                android:textSize="14sp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                app:layout_constraintBottom_toTopOf="@id/tv_center_banner_sub_title"-->
-    <!--                app:layout_constraintEnd_toStartOf="@+id/iv_center_banner"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/view_center_banner"-->
-    <!--                app:layout_constraintTop_toTopOf="@id/view_center_banner"-->
-    <!--                app:layout_constraintVertical_chainStyle="spread_inside" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/tv_center_banner_sub_title"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginBottom="13dp"-->
-    <!--                android:text="100만의 PICK"-->
-    <!--                android:textColor="@color/gray_200"-->
-    <!--                android:textSize="12sp"-->
-    <!--                app:layout_constraintBottom_toBottomOf="@id/view_center_banner"-->
-    <!--                app:layout_constraintEnd_toEndOf="@+id/tv_center_banner_title"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/tv_center_banner_title"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/tv_center_banner_title" />-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/iv_center_banner"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="64dp"-->
-    <!--                android:adjustViewBounds="true"-->
-    <!--                android:src="@drawable/img_million_crown"-->
-    <!--                app:layout_constraintBottom_toBottomOf="@id/view_center_banner"-->
-    <!--                app:layout_constraintEnd_toEndOf="@id/view_center_banner"-->
-    <!--                app:layout_constraintTop_toTopOf="@id/view_center_banner" />-->
-
-    <!--            &lt;!&ndash;            <View&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/view_grid_area"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/view_center_banner"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/view_center_banner"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toBottomOf="@id/view_center_banner" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <include&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/include_grid"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                layout="@layout/item_grid"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/view_grid_area"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/view_grid_area"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/view_grid_area"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/view_grid_area" />&ndash;&gt;-->
-
-    <!--            <androidx.recyclerview.widget.RecyclerView-->
-    <!--                android:id="@+id/rv_content_list"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:paddingHorizontal="8dp"-->
-    <!--                android:paddingTop="2dp"-->
-    <!--                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/view_center_banner"-->
-    <!--                app:spanCount="3"-->
-    <!--                tools:itemCount="6"-->
-    <!--                tools:listitem="@layout/item_grid_content" />-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:background="@drawable/bg_content_image_8dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:clipToOutline="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_04"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/view_center_banner"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toBottomOf="@id/view_center_banner" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_02_free"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="16dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_free_3_days_waiting"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_02" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_02_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_02_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toTopOf="@id/tv_content_02_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_04_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_02" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_content_02_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="12dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="5억"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textColor="@color/gray_200"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textSize="10sp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/iv_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_02" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_04"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:background="@drawable/bg_content_image_8dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:clipToOutline="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_04"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.334"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_02" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_04_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_04_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toTopOf="@id/tv_content_04_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_03_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.334"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_02_title" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_content_04_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="12dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="캐시선물 적립하세요"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textColor="@color/gray_200"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textSize="10sp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/iv_content_04"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_04"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_04" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:background="@drawable/bg_content_image_8dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:clipToOutline="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/view_center_banner"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_04"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_04" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_03_free"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="16dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_free_3_days_waiting"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_03" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_03_up"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="16dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_up"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_03_free"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_03_free" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_03_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_03_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toTopOf="@id/tv_content_03_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_04_title" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_content_03_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="12dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="1.5억"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textColor="@color/gray_200"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textSize="10sp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/iv_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_03"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_03" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:background="@drawable/bg_content_image_8dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:clipToOutline="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_02"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toBottomOf="@id/iv_content_02" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_05_free"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="16dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_free_3_days_waiting"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_05" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_05_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_05_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toTopOf="@id/tv_content_05_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_06_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_05" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_content_05_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="12dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="5,960만"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textColor="@color/gray_200"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textSize="10sp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/iv_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_05" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:background="@drawable/bg_content_image_8dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:clipToOutline="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.334"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_05" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_06_free"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="16dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_clock"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_06" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_06_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginEnd="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_06_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toTopOf="@id/tv_content_06_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@id/iv_content_07_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.334"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_05_title" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_content_06_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="12dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="1.4억"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textColor="@color/gray_200"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textSize="10sp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/iv_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_06" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:background="@drawable/bg_content_image_8dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:clipToOutline="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/view_center_banner"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_06"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_06" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_07_event"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="16dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_event"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/iv_content_07" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_content_07_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginStart="2dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="4dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:adjustViewBounds="true"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/img_content_07_title"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toTopOf="@id/tv_content_07_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintHorizontal_weight="0.333"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toEndOf="@id/iv_content_06_title" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_content_07_views"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginBottom="12dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="334.3만"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textColor="@color/gray_200"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:textSize="10sp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_07" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/tv_recently_viewed_contents"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                style="@style/AppTextTitle"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_marginTop="30dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:text="최근 본 작품"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toStartOf="@+id/iv_arrow_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="@id/iv_content_05"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toBottomOf="@id/iv_content_05" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:id="@+id/iv_arrow_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="24dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="24dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:src="@drawable/ic_arrow_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="@id/tv_recently_viewed_contents"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@id/iv_content_07"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="@id/tv_recently_viewed_contents" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <HorizontalScrollView&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                android:scrollbars="none"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                app:layout_constraintTop_toBottomOf="@id/tv_recently_viewed_contents">&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
-    <!--            &lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                    android:orientation="horizontal"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                    android:paddingTop="8dp">&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_08" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_09" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_13" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_10" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_11" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_12" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_14" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                    <include layout="@layout/item_content_15" />&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            </HorizontalScrollView>&ndash;&gt;-->
-
-    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <!--    </androidx.core.widget.NestedScrollView>-->
+<!--    </HorizontalScrollView>-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_main"

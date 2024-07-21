@@ -1,25 +1,18 @@
 package com.jeongu.kakaopageapp.ui.contentdetail
 
-import android.graphics.Color
 import android.os.Bundle
-import android.view.ContentInfo
-import android.view.ViewTreeObserver
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.ContentManager
 import com.jeongu.kakaopageapp.databinding.ActivityContentDetailBinding
 import jp.wasabeef.glide.transformations.BlurTransformation
-import kotlin.math.abs
 
 class ContentDetailActivity : AppCompatActivity() {
 
@@ -76,7 +69,7 @@ class ContentDetailActivity : AppCompatActivity() {
 
     private fun setTabLayout() {
         with(binding) {
-            viewpagerContentDetail.adapter = DetailPagerAdapter(this@ContentDetailActivity)
+            viewpagerContentDetail.adapter = DetailPagerStateAdapter(this@ContentDetailActivity)
             TabLayoutMediator(tabContentDetail, viewpagerContentDetail) { tab, position ->
                 tab.text = tabTitles[position]
             }.attach()

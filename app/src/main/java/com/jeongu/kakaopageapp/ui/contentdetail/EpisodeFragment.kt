@@ -5,8 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jeongu.kakaopageapp.R
-import com.jeongu.kakaopageapp.data.EpisodeManager
+import com.jeongu.kakaopageapp.data.source.local.EpisodeManager
 import com.jeongu.kakaopageapp.databinding.FragmentEpisodeBinding
 
 class EpisodeFragment : Fragment() {

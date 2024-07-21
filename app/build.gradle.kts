@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    implementation(libs.androidx.fragment.ktx)
+
     implementation(libs.androidx.viewpager2)
 
     implementation ("com.github.bumptech.glide:glide:4.11.0")

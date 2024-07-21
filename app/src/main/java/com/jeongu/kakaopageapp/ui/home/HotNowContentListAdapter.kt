@@ -5,17 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
-import com.jeongu.kakaopageapp.data.HotNowGridContent
-import com.jeongu.kakaopageapp.data.HotNowInfo
-import com.jeongu.kakaopageapp.data.HotNowLinearContent
-import com.jeongu.kakaopageapp.data.HotNowManager
-import com.jeongu.kakaopageapp.data.HotNowSectionTitle
-import com.jeongu.kakaopageapp.data.HotNowViewPager
+import com.jeongu.kakaopageapp.data.model.HotNowGridContent
+import com.jeongu.kakaopageapp.data.model.HotNowInfo
+import com.jeongu.kakaopageapp.data.model.HotNowLinearContent
+import com.jeongu.kakaopageapp.data.model.HotNowSectionTitle
+import com.jeongu.kakaopageapp.data.model.HotNowViewPager
 import com.jeongu.kakaopageapp.databinding.ItemHotNowGridContentBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowLinearContentBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowSectionTitleBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowViewPagerBinding
-import com.jeongu.kakaopageapp.databinding.ItemImageSlideBinding
 import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
 
 private const val VIEW_TYPE_VIEW_PAGER = 0
@@ -82,32 +80,23 @@ class HotNowContentListAdapter(private val items: List<HotNowInfo>) : RecyclerVi
 
         companion object {
             fun from(parent: ViewGroup): HotNowViewPagerViewHolder {
-                return HotNowViewPagerViewHolder(
-                    ItemHotNowViewPagerBinding.inflate(
+                return HotNowViewPagerViewHolder(ItemHotNowViewPagerBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
-                )
+                    ))
             }
         }
     }
 
     class HotNowSectionTitleViewHolder(private val binding: ItemHotNowSectionTitleBinding): RecyclerView.ViewHolder(binding.root) {
-
         fun bind(item: HotNowSectionTitle) {
             binding.tvSectionTitle.text = item.title
         }
 
         companion object {
             fun from(parent: ViewGroup): HotNowSectionTitleViewHolder {
-                return HotNowSectionTitleViewHolder(
-                    ItemHotNowSectionTitleBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
-                )
+                return HotNowSectionTitleViewHolder(ItemHotNowSectionTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             }
         }
     }

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jeongu.kakaopageapp.data.TopContentInfo
+import com.jeongu.kakaopageapp.data.model.TopContentInfo
 import com.jeongu.kakaopageapp.databinding.ItemImageSlideBinding
 
 class ViewPagerAdapter() : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {

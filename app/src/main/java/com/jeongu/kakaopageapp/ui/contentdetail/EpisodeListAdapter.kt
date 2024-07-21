@@ -1,15 +1,14 @@
 package com.jeongu.kakaopageapp.ui.contentdetail
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.jeongu.kakaopageapp.R
-import com.jeongu.kakaopageapp.data.EpisodeInfo
+import com.jeongu.kakaopageapp.data.model.EpisodeInfo
 import com.jeongu.kakaopageapp.databinding.ItemContentEpisodeBinding
 
 class EpisodeListAdapter() : ListAdapter<EpisodeInfo, EpisodeListAdapter.EpisodeViewHolder>(
@@ -43,11 +42,7 @@ class EpisodeListAdapter() : ListAdapter<EpisodeInfo, EpisodeListAdapter.Episode
                 if (episode.isViewed) {
                     viewEpisodeAlphaArea.visibility = View.VISIBLE
 
-                    if (episode.isLastViewed) {
-                        ivEpisodeFoldedPaper.visibility = View.VISIBLE
-                    } else {
-                        ivEpisodeFoldedPaper.visibility = View.GONE
-                    }
+                    ivEpisodeFoldedPaper.isVisible = episode.isLastViewed
                 } else {
                     viewEpisodeAlphaArea.visibility = View.GONE
                     ivEpisodeFoldedPaper.visibility = View.GONE

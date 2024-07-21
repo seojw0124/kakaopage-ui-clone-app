@@ -16,7 +16,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_home"
-        android:name="com.jeongu.kakaopageapp.ui.home.HotNowFragment"
+        android:name="com.jeongu.kakaopageapp.ui.home.HomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation_main"

@@ -82,32 +82,23 @@ class HotNowContentListAdapter(private val items: List<HotNowInfo>) : RecyclerVi
 
         companion object {
             fun from(parent: ViewGroup): HotNowViewPagerViewHolder {
-                return HotNowViewPagerViewHolder(
-                    ItemHotNowViewPagerBinding.inflate(
+                return HotNowViewPagerViewHolder(ItemHotNowViewPagerBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
-                )
+                    ))
             }
         }
     }
 
     class HotNowSectionTitleViewHolder(private val binding: ItemHotNowSectionTitleBinding): RecyclerView.ViewHolder(binding.root) {
-
         fun bind(item: HotNowSectionTitle) {
             binding.tvSectionTitle.text = item.title
         }
 
         companion object {
             fun from(parent: ViewGroup): HotNowSectionTitleViewHolder {
-                return HotNowSectionTitleViewHolder(
-                    ItemHotNowSectionTitleBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
-                )
+                return HotNowSectionTitleViewHolder(ItemHotNowSectionTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             }
         }
     }

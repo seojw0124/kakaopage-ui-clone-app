@@ -3,30 +3,17 @@ package com.jeongu.kakaopageapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewTreeObserver
-import android.widget.HorizontalScrollView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.google.android.material.chip.Chip
-import com.google.android.material.tabs.TabLayoutMediator
-import com.jeongu.kakaopageapp.data.ContentManager
-import com.jeongu.kakaopageapp.data.HotNowManager
-import com.jeongu.kakaopageapp.data.TopContentManager
+import com.jeongu.kakaopageapp.data.source.local.HotNowManager
 import com.jeongu.kakaopageapp.databinding.ActivityMainBinding
-import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
-import com.jeongu.kakaopageapp.ui.home.GridContentListAdapter
 import com.jeongu.kakaopageapp.ui.home.HomeFragment
-import com.jeongu.kakaopageapp.ui.home.HomePagerStateAdapter
 import com.jeongu.kakaopageapp.ui.home.HotNowContentListAdapter
-import com.jeongu.kakaopageapp.ui.home.ViewPagerAdapter
-import com.jeongu.kakaopageapp.ui.shortcut.ShortcutActivity
 import com.jeongu.kakaopageapp.ui.shortcut.ShortcutFragment
 
 const val EXTRA_STRING_CHIP = "chip"

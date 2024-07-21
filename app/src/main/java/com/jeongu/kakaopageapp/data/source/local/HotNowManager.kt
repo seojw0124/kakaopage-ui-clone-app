@@ -1,6 +1,14 @@
-package com.jeongu.kakaopageapp.data
+package com.jeongu.kakaopageapp.data.source.local
 
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.GridContentInfo
+import com.jeongu.kakaopageapp.data.model.HotNowGridContent
+import com.jeongu.kakaopageapp.data.model.HotNowInfo
+import com.jeongu.kakaopageapp.data.model.HotNowLinearContent
+import com.jeongu.kakaopageapp.data.model.HotNowSectionTitle
+import com.jeongu.kakaopageapp.data.model.HotNowViewPager
+import com.jeongu.kakaopageapp.data.model.LinearContentInfo
+import com.jeongu.kakaopageapp.data.model.TopContentInfo
 
 object HotNowManager {
 
@@ -256,4 +264,10 @@ object HotNowManager {
     }
 
     fun getList(): List<HotNowInfo> = hotNowContentList
+
+    // 임의로 데이터 필터링
+    fun getRealtimeRankingList(): List<HotNowInfo> {
+        // HotNowLinearContent 제외
+        return hotNowContentList.filter { it !is HotNowLinearContent }
+    }
 }

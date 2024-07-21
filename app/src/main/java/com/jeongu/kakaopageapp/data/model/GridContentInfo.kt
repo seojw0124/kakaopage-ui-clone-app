@@ -1,12 +1,12 @@
-package com.jeongu.kakaopageapp.data
+package com.jeongu.kakaopageapp.data.model
 
-data class TopContentInfo(
+data class GridContentInfo(
     val id: Int,
     val thumbnailImage: Int,
     val title: Int,
     val description: String,
     val freeTypeImage: Int?,
     val uploadImage: Int?,
-    val genre: String?,
-    val page: String,
+    val eventImage: Int?,
+    val ageLimitImage: Int?
 )

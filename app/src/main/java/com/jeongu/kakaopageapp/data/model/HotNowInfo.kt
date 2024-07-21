@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.data
+package com.jeongu.kakaopageapp.data.model
 
 sealed class HotNowInfo
 

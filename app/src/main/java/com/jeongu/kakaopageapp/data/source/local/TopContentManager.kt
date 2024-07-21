@@ -1,6 +1,7 @@
-package com.jeongu.kakaopageapp.data
+package com.jeongu.kakaopageapp.data.source.local
 
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.TopContentInfo
 
 object TopContentManager {
 

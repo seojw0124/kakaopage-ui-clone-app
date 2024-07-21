@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jeongu.kakaopageapp.data.GridContentInfo
+import com.jeongu.kakaopageapp.data.model.GridContentInfo
 import com.jeongu.kakaopageapp.databinding.ItemGridContentBinding
 
 class GridContentListAdapter(private val onClick: (GridContentInfo) -> Unit) : ListAdapter<GridContentInfo, GridContentListAdapter.ContentViewHolder>(

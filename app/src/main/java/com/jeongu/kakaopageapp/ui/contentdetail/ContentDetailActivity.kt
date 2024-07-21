@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.R
-import com.jeongu.kakaopageapp.data.ContentManager
+import com.jeongu.kakaopageapp.data.source.local.ContentManager
 import com.jeongu.kakaopageapp.databinding.ActivityContentDetailBinding
 import jp.wasabeef.glide.transformations.BlurTransformation
 

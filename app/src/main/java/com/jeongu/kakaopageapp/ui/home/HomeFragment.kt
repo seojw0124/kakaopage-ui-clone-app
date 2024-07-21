@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jeongu.kakaopageapp.R
-import com.jeongu.kakaopageapp.data.HotNowManager
 import com.jeongu.kakaopageapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

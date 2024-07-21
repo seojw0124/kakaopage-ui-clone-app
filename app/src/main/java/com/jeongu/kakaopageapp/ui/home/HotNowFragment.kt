@@ -7,17 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.jeongu.kakaopageapp.R
-import com.jeongu.kakaopageapp.data.HotNowManager
+import com.jeongu.kakaopageapp.data.source.HomeContentRepository
+import com.jeongu.kakaopageapp.data.source.local.HotNowManager
 import com.jeongu.kakaopageapp.databinding.FragmentHotNowBinding
 
 class HotNowFragment : Fragment() {
 
     private var _binding: FragmentHotNowBinding? = null
     private val binding get() = _binding!!
+    private val repository = HomeContentRepository()
 
     private val hotNowContentListAdapter by lazy {
-        HotNowContentListAdapter(HotNowManager.getList())
+        HotNowContentListAdapter(repository.getHotNowContentList())
     }
 
     override fun onCreateView(

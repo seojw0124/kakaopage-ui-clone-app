@@ -14,6 +14,7 @@ import com.jeongu.kakaopageapp.databinding.ItemHotNowGridContentBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowLinearContentBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowSectionTitleBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowViewPagerBinding
+import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
 import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
 
 private const val VIEW_TYPE_VIEW_PAGER = 0
@@ -21,13 +22,16 @@ private const val VIEW_TYPE_SECTION_TITLE = 1
 private const val VIEW_TYPE_GRID_CONTENT = 2
 private const val VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT = 3
 
-class HotNowContentListAdapter(private val items: List<HotNowInfo>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HotNowContentListAdapter(
+    private val items: List<HotNowInfo>,
+    private val listener: ContentItemClickListener
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             VIEW_TYPE_VIEW_PAGER -> HotNowViewPagerViewHolder.from(parent)
             VIEW_TYPE_SECTION_TITLE -> HotNowSectionTitleViewHolder.from(parent)
-            VIEW_TYPE_GRID_CONTENT -> HotNowGridViewHolder.from(parent)
+            VIEW_TYPE_GRID_CONTENT -> HotNowGridViewHolder.from(parent, listener)
             VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT -> HotNowLinearViewHolder.from(parent)
             else -> throw IllegalArgumentException("Invalid view type")
         }
@@ -101,12 +105,25 @@ class HotNowContentListAdapter(private val items: List<HotNowInfo>) : RecyclerVi
         }
     }
 
-    class HotNowGridViewHolder(private val binding: ItemHotNowGridContentBinding): RecyclerView.ViewHolder(binding.root) {
+    class HotNowGridViewHolder(
+        private val binding: ItemHotNowGridContentBinding,
+        private val listener: ContentItemClickListener
+    ): RecyclerView.ViewHolder(binding.root) {
 
         private val gridContentAdapter = GridContentListAdapter { content ->
-            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
-            intent.putExtra(EXTRA_CONTENT_ID, content.id)
-            binding.root.context.startActivity(intent)
+//            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
+//            intent.putExtra(EXTRA_CONTENT_ID, content.id)
+//            binding.root.context.startActivity(intent)
+            // ContentDetailFragment로 이동
+//            val contentDetailFragment = ContentDetailFragment()
+//            val bundle = Bundle()
+//            bundle.putInt(EXTRA_CONTENT_ID, content.id)
+//            contentDetailFragment.arguments = bundle
+//            (binding.root.context as MainActivity).supportFragmentManager.beginTransaction()
+//                .replace(R.id.container_home, contentDetailFragment)
+//                .addToBackStack(null)
+//                .commit()
+            listener.onContentItemClick(content.id)
         }
 
         init {
@@ -118,13 +135,14 @@ class HotNowContentListAdapter(private val items: List<HotNowInfo>) : RecyclerVi
         }
 
         companion object {
-            fun from(parent: ViewGroup): HotNowGridViewHolder {
+            fun from(parent: ViewGroup, listener: ContentItemClickListener): HotNowGridViewHolder {
                 return HotNowGridViewHolder(
                     ItemHotNowGridContentBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ),
+                    listener
                 )
             }
         }

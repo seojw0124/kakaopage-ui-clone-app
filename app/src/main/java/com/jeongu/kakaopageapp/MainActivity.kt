@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
     //private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
     private var previousChipId: Int = View.NO_ID
 
-    private val hotNowContentListAdapter by lazy {
-        HotNowContentListAdapter(HotNowManager.getList())
-    }
+//    private val hotNowContentListAdapter by lazy {
+//        HotNowContentListAdapter(HotNowManager.getList(), this)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun setLayout() {
         //setViewPager2()
         //initRecyclerView()
-        setToolbar()
+        //setToolbar()
         //setTopBanner()
         setBottomNavigation()
         //setChip()
@@ -67,19 +67,19 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-    private fun setToolbar() {
-        binding.layoutToolbarHome.ivToolbarCash.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
-            startActivity(intent)
-        }
-
-
-//        val toolbar = findViewById<View>(R.id.layout_toolbar)
-//        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+//    private fun setToolbar() {
+//        binding.layoutToolbarHome.ivToolbarCash.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
 //            startActivity(intent)
 //        }
-    }
+//
+//
+////        val toolbar = findViewById<View>(R.id.layout_toolbar)
+////        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+////            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
+////            startActivity(intent)
+////        }
+//    }
 
 //    private fun setTopBanner() {
 //        binding.viewTopBanner.setOnClickListener {

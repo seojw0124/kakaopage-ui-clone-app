@@ -7,20 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
 import com.jeongu.kakaopageapp.data.source.HomeContentRepository
 import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.databinding.FragmentRealtimeRankingBinding
+import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
+import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailFragment
 
-class RealtimeRankingFragment : Fragment() {
+class RealtimeRankingFragment : Fragment(), ContentItemClickListener {
 
     private var _binding: FragmentRealtimeRankingBinding? = null
     private val binding get() = _binding!!
 
     private val contentRepository = HomeContentRepositoryImpl(CacheDataSource.getCacheDataSource())
     private val realtimeRankingListAdapter by lazy {
-        HotNowContentListAdapter(contentRepository.getRealtimeRankingContentList())
+        HotNowContentListAdapter(contentRepository.getRealtimeRankingContentList(), this)
     }
 
 //    private val repository = HomeContentRepository()
@@ -69,5 +73,17 @@ class RealtimeRankingFragment : Fragment() {
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
 //            startActivity(intent)
 //        }
+    }
+
+    override fun onContentItemClick(contentId: Int) {
+        val contentDetailFragment = ContentDetailFragment()
+        val bundle = Bundle()
+        bundle.putInt(EXTRA_CONTENT_ID, contentId)
+        contentDetailFragment.arguments = bundle
+        parentFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace(R.id.container_home, contentDetailFragment)
+            addToBackStack(null)
+        }
     }
 }

@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="0장"
+        android:text="1장"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/tv_label_content_detail_rental_ticket"
         app:layout_constraintTop_toTopOf="@id/tv_label_content_detail_rental_ticket" />

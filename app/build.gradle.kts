@@ -48,12 +48,13 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.androidx.fragment.ktx)
+
     implementation(libs.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.androidx.viewpager2)
 
-    implementation ("com.github.bumptech.glide:glide:4.11.0")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     implementation (libs.glide.transformations)
 

@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.findNavController
 import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.MainActivity
 import com.jeongu.kakaopageapp.R
@@ -90,12 +91,16 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 //            replace(R.id.container_home, contentDetailFragment)
 //            addToBackStack(null)
 //        }
-        (binding.root.context as MainActivity).supportFragmentManager.setFragmentResult("asdf", bundleOf("aaa" to contentId))
-        // ContentDetailFragment 로 이동
-        (binding.root.context as MainActivity).supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace(R.id.container_home, ContentDetailFragment())
-            addToBackStack(null)
-        }
+
+//        (binding.root.context as MainActivity).supportFragmentManager.setFragmentResult("asdf", bundleOf("aaa" to contentId))
+//        // ContentDetailFragment 로 이동
+//        (binding.root.context as MainActivity).supportFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            replace(R.id.container_home, ContentDetailFragment())
+//            addToBackStack(null)
+//        }
+
+        val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
+        findNavController().navigate(action)
     }
 }

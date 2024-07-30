@@ -81,7 +81,7 @@ class ShortcutActivity : AppCompatActivity() {
     }
 
     private fun setBottomNavigation() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_home)
         bottomNavigationView.selectedItemId = R.id.navigation_shortcut
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {

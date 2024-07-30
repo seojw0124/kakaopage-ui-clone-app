@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.fragment.findNavController
 import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
@@ -76,14 +77,17 @@ class RealtimeRankingFragment : Fragment(), ContentItemClickListener {
     }
 
     override fun onContentItemClick(contentId: Int) {
-        val contentDetailFragment = ContentDetailFragment()
-        val bundle = Bundle()
-        bundle.putInt(EXTRA_CONTENT_ID, contentId)
-        contentDetailFragment.arguments = bundle
-        parentFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace(R.id.container_home, contentDetailFragment)
-            addToBackStack(null)
-        }
+//        val contentDetailFragment = ContentDetailFragment()
+//        val bundle = Bundle()
+//        bundle.putInt(EXTRA_CONTENT_ID, contentId)
+//        contentDetailFragment.arguments = bundle
+//        parentFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            replace(R.id.container_home, contentDetailFragment)
+//            addToBackStack(null)
+//        }
+
+        val action = RealtimeRankingFragmentDirections.actionGlobalArticleDetail(contentId)
+        findNavController().navigate(action)
     }
 }

@@ -1,27 +1,21 @@
 package com.jeongu.kakaopageapp
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import com.jeongu.kakaopageapp.data.source.local.HotNowManager
-import com.jeongu.kakaopageapp.databinding.ActivityMainBinding
-import com.jeongu.kakaopageapp.ui.home.HomeFragment
-import com.jeongu.kakaopageapp.ui.home.HotNowContentListAdapter
-import com.jeongu.kakaopageapp.ui.shortcut.ShortcutFragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.jeongu.kakaopageapp.databinding.ActivityHomeBinding
 
 const val EXTRA_STRING_CHIP = "chip"
 const val EXTRA_CONTENT_ID = "contentId"
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
     //private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
     private var previousChipId: Int = View.NO_ID
 
@@ -33,13 +27,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.home)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 50, systemBars.right, 0)
             insets
         }
 
-        setLayout()
+        setBottomNavigation()
     }
 
     private fun setLayout() {
@@ -49,6 +43,24 @@ class MainActivity : AppCompatActivity() {
         //setTopBanner()
         setBottomNavigation()
         //setChip()
+    }
+
+    private fun setBottomNavigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.container_home) as NavHostFragment
+        val navController = navHostFragment.navController
+        binding.bottomNavigationHome.setupWithNavController(navController)
+        // 바텀 네비게이션 뷰가 화면을 가리지 않도록 설정
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.navigation_home, R.id.navigation_shortcut, R.id.navigation_notification, R.id.navigation_gift_box, R.id.navigation_storage_box -> { // 홈, 송금 화면일 때
+                    binding.bottomNavigationHome.visibility = View.VISIBLE
+                }
+                else -> { // 그 외 화면일 때, 바텀 네비게이션 뷰 숨김 -> 이렇게 fragment로 처리할 수 있고, activity로 처리할 수 있음
+                    binding.bottomNavigationHome.visibility = View.GONE
+                }
+            }
+        }
     }
 
 
@@ -94,41 +106,41 @@ class MainActivity : AppCompatActivity() {
 ////        }
 //    }
 
-    private fun setBottomNavigation() {
-        binding.bottomNavigationMain.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    HomeFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_shortcut -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_notification -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_gift_box -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_storage_box -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
-    private fun Fragment.loadFragment() {
-        supportFragmentManager.commit {
-            replace(R.id.container_home, this@loadFragment)
-            setReorderingAllowed(true)
-            addToBackStack(null)
-        }
-    }
+//    private fun setBottomNavigation() {
+//        binding.bottomNavigationMain.setOnItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.navigation_home -> {
+//                    HomeFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_shortcut -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_notification -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_gift_box -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_storage_box -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
+//    }
+//
+//    private fun Fragment.loadFragment() {
+//        supportFragmentManager.commit {
+//            replace(R.id.container_home, this@loadFragment)
+//            setReorderingAllowed(true)
+//            addToBackStack(null)
+//        }
+//    }
 
 //    private fun setChip() {
 //        val chipData = intent.getStringExtra(EXTRA_STRING_CHIP) ?: ""

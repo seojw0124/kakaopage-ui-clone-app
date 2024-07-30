@@ -1,18 +1,17 @@
 package com.jeongu.kakaopageapp.ui.contentdetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
-import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.MainActivity
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.source.local.ContentManager
@@ -23,7 +22,8 @@ class ContentDetailFragment : Fragment() {
 
     private var _binding: FragmentContentDetailBinding? = null
     private val binding get() = _binding!!
-    private var contentId = -1
+    //private var contentId = -1
+    private val args: ContentDetailFragmentArgs by navArgs()
 
     private val contentDetailTabTitles = arrayOf(
         "회차",
@@ -55,11 +55,15 @@ class ContentDetailFragment : Fragment() {
     }
 
     private fun getContentId() {
-        setFragmentResultListener("asdf") { _, bundle ->
-            contentId = bundle.getInt("aaa")
-            if (contentId != -1) {
-                setContentInfo(contentId)
-            }
+//        setFragmentResultListener("asdf") { _, bundle ->
+//            contentId = bundle.getInt("aaa")
+//            if (contentId != -1) {
+//                setContentInfo(contentId)
+//            }
+//        }
+        val contentId = args.contentId
+        if (contentId != -1) {
+            setContentInfo(contentId)
         }
     }
 
@@ -95,7 +99,7 @@ class ContentDetailFragment : Fragment() {
 
     private fun hideBottomNavigation(isHide: Boolean) {
         (activity as MainActivity)
-            .findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
+            .findViewById<BottomNavigationView>(R.id.bottom_navigation_home)
             .isVisible = !isHide
     }
 

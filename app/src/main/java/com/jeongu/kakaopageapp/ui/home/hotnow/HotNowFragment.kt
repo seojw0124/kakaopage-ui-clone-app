@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.model.LinearContentInfo
 import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
@@ -105,17 +106,17 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 //            addToBackStack(null)
 //        }
         // 뷰모델에 addRecentlyViewedItem(contentId) 호출
-        val item = LinearContentInfo(
-            14,
-            R.drawable.img_content_14,
-            "말단 병사에서 군주까지",
-            "웹툰",
-            R.drawable.ic_clock
-        )
-        viewModel.addRecentlyViewedItem(item)
+//        val item = LinearContentInfo(
+//            14,
+//            R.drawable.img_content_14,
+//            "말단 병사에서 군주까지",
+//            "웹툰",
+//            R.drawable.ic_clock
+//        )
+//        viewModel.addRecentlyViewedItem(item)
 
 
-//        val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
-//        findNavController().navigate(action)
+        val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
+        findNavController().navigate(action)
     }
 }

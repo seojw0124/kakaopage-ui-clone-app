@@ -1,12 +1,10 @@
 package com.jeongu.kakaopageapp.ui.home.hotnow
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.data.model.HotNowGridContent
 import com.jeongu.kakaopageapp.data.model.HotNowInfo
 import com.jeongu.kakaopageapp.data.model.HotNowLinearContent
@@ -17,7 +15,6 @@ import com.jeongu.kakaopageapp.databinding.ItemHotNowLinearContentBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowSectionTitleBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowViewPagerBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
-import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
 import com.jeongu.kakaopageapp.ui.home.adapter.GridContentListAdapter
 import com.jeongu.kakaopageapp.ui.home.adapter.LinearContentListAdapter
 import com.jeongu.kakaopageapp.ui.home.adapter.ViewPagerAdapter
@@ -36,7 +33,7 @@ class HotNowContentListAdapter(
             VIEW_TYPE_VIEW_PAGER -> HotNowViewPagerViewHolder.from(parent)
             VIEW_TYPE_SECTION_TITLE -> HotNowSectionTitleViewHolder.from(parent)
             VIEW_TYPE_GRID_CONTENT -> HotNowGridViewHolder.from(parent, listener)
-            VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT -> HotNowLinearViewHolder.from(parent)
+            VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT -> HotNowLinearViewHolder.from(parent, listener)
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -145,12 +142,16 @@ class HotNowContentListAdapter(
         }
     }
 
-    class HotNowLinearViewHolder(private val binding: ItemHotNowLinearContentBinding): RecyclerView.ViewHolder(binding.root) {
+    class HotNowLinearViewHolder(
+        private val binding: ItemHotNowLinearContentBinding,
+        private val listener: ContentItemClickListener
+    ): RecyclerView.ViewHolder(binding.root) {
 
         private val linearContentAdapter = LinearContentListAdapter { content ->
-            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
-            intent.putExtra(EXTRA_CONTENT_ID, content.id)
-            binding.root.context.startActivity(intent)
+//            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
+//            intent.putExtra(EXTRA_CONTENT_ID, content.id)
+//            binding.root.context.startActivity(intent)
+            listener.onContentItemClick(content.id)
         }
 
         init {
@@ -162,13 +163,14 @@ class HotNowContentListAdapter(
         }
 
         companion object {
-            fun from(parent: ViewGroup): HotNowLinearViewHolder {
+            fun from(parent: ViewGroup, listener: ContentItemClickListener): HotNowLinearViewHolder {
                 return HotNowLinearViewHolder(
                     ItemHotNowLinearContentBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ),
+                    listener
                 )
             }
         }

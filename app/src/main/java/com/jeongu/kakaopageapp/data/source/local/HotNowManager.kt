@@ -1,6 +1,8 @@
 package com.jeongu.kakaopageapp.data.source.local
 
+import android.util.Log
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.ContentDetailInfo
 import com.jeongu.kakaopageapp.data.model.GridContentInfo
 import com.jeongu.kakaopageapp.data.model.HotNowGridContent
 import com.jeongu.kakaopageapp.data.model.HotNowInfo
@@ -187,7 +189,7 @@ object HotNowManager {
                         R.drawable.ic_free_serial
                     ),
                     LinearContentInfo(
-                        5,
+                        15,
                         R.drawable.img_content_15,
                         "흑백무제",
                         "웹툰",
@@ -265,8 +267,28 @@ object HotNowManager {
 
     fun getList(): MutableList<HotNowInfo> = hotNowContentList
 
-    fun getRecentlyViewedList(): List<HotNowLinearContent> {
-        return hotNowContentList.filterIsInstance<HotNowLinearContent>()
+    fun getRecentlyViewedList(): List<ContentDetailInfo> {
+//        return hotNowContentList.filterIsInstance<HotNowLinearContent>()
+//            .flatMap { it.linearItems }
+        // HotNowLinearContent의 list를 반환
+//        return hotNowContentList.filter { it is HotNowLinearContent }
+//            .map { it as HotNowLinearContent }
+//            .flatMap { it.linearItems }
+//        return hotNowContentList
+//            .filterIsInstance<HotNowLinearContent>()
+//            .flatMap { it.linearItems }
+        // it.linearItems의 id를 받아와서 ContentManager에서 찾아와서 리스트로 반환
+        val list = hotNowContentList.filterIsInstance<HotNowLinearContent>()
+            .flatMap { it.linearItems }
+        Log.d("jeongu", "list: $list")
+        val result = mutableListOf<ContentDetailInfo>()
+        list.forEach { content ->
+            val item = ContentManager.getDetailInfo(content.id)
+            Log.d("jeongu", "item: $item")
+            item?.let { result.add(it) }
+        }
+        Log.d("jeongu", "result: $result")
+        return result
     }
 
     fun addRecentlyViewedItem(content: HotNowInfo) {

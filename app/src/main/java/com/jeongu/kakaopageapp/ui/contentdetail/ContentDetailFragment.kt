@@ -6,16 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
-import com.jeongu.kakaopageapp.MainActivity
+import com.jeongu.kakaopageapp.ui.MainActivity
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.ContentDetailInfo
 import com.jeongu.kakaopageapp.data.source.local.ContentManager
 import com.jeongu.kakaopageapp.databinding.FragmentContentDetailBinding
+import com.jeongu.kakaopageapp.ui.storagebox.StorageBoxViewModel
+import com.jeongu.kakaopageapp.ui.storagebox.StorageBoxViewModelFactory
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 class ContentDetailFragment : Fragment() {
@@ -32,13 +35,18 @@ class ContentDetailFragment : Fragment() {
         "댓글"
     )
 
+    private val viewModel: StorageBoxViewModel by activityViewModels {
+        StorageBoxViewModelFactory(requireContext())
+    }
+    private lateinit var contentInfo: ContentDetailInfo
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentContentDetailBinding.inflate(inflater, container, false)
-        hideBottomNavigation(true)
+        //hideBottomNavigation(true)
         return binding.root
     }
 
@@ -49,9 +57,18 @@ class ContentDetailFragment : Fragment() {
 
     private fun setLayout() {
         getContentId()
-        setBlurImage()
         setTabLayout()
         //setToolbar()
+        binding.tvContentDetailTitle.setOnClickListener {
+//            val item = LinearContentInfo(
+//                14,
+//                R.drawable.img_content_14,
+//                "말단 병사에서 군주까지",
+//                "웹툰",
+//                R.drawable.ic_clock
+//            )
+            viewModel.addRecentlyViewedItem(contentInfo)
+        }
     }
 
     private fun getContentId() {
@@ -68,9 +85,16 @@ class ContentDetailFragment : Fragment() {
     }
 
     private fun setContentInfo(contentId: Int) {
-        val contentInfo = ContentManager.getDetailInfo(contentId) ?: return
+        contentInfo = ContentManager.getDetailInfo(contentId) ?: return
         with(binding) {
-            ivContentDetailThumbnailImage.setImageResource(contentInfo.thumbnailImage)
+            Glide.with(ivContentDetailBlurImage)
+                .load(contentInfo.thumbnailImage)
+                .apply(RequestOptions.bitmapTransform(BlurTransformation(70, 3)))
+                .into(ivContentDetailBlurImage)
+            //ivContentDetailThumbnailImage.setImageResource(contentInfo.thumbnailImage)
+            Glide.with(ivContentDetailThumbnailImage)
+                .load(contentInfo.thumbnailImage)
+                .into(ivContentDetailThumbnailImage)
             tvContentDetailTitle.text = contentInfo.title
             tvContentDetailCreator.text = contentInfo.creator
             tvContentDetailGenre.text = contentInfo.genre
@@ -79,18 +103,9 @@ class ContentDetailFragment : Fragment() {
         }
     }
 
-    private fun setBlurImage() {
-        with(binding) {
-            Glide.with(ivContentDetailBlurImage)
-                .load(R.drawable.img_content_10)
-                .apply(RequestOptions.bitmapTransform(BlurTransformation(70, 3)))
-                .into(ivContentDetailBlurImage)
-        }
-    }
-
     private fun setTabLayout() {
         with(binding) {
-            viewpagerContentDetail.adapter = DetailPagerAdapter(this@ContentDetailFragment)
+            viewpagerContentDetail.adapter = DetailPagerStateAdapter(this@ContentDetailFragment)
             TabLayoutMediator(tabContentDetail, viewpagerContentDetail) { tab, position ->
                 tab.text = contentDetailTabTitles[position]
             }.attach()
@@ -106,6 +121,6 @@ class ContentDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        hideBottomNavigation(false)
+        //hideBottomNavigation(false)
     }
 }

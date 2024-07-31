@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_realtime_ranking" />
 
     <fragment
+        android:id="@+id/navigation_storage_box"
+        android:name="com.jeongu.kakaopageapp.ui.storagebox.StorageBoxFragment"
+        android:label="보관함"
+        tools:layout="@layout/fragment_storage_box"/>
+
+    <fragment
         android:id="@+id/navigation_content_detail"
         android:name="com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailFragment"
         android:label="콘텐츠 상세 페이지"

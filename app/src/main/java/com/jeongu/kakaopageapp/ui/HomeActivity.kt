@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp
+package com.jeongu.kakaopageapp.ui
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.databinding.ActivityHomeBinding
 
 const val EXTRA_STRING_CHIP = "chip"
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         // 바텀 네비게이션 뷰가 화면을 가리지 않도록 설정
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
-                R.id.navigation_home, R.id.navigation_shortcut, R.id.navigation_notification, R.id.navigation_gift_box, R.id.navigation_storage_box -> { // 홈, 송금 화면일 때
+                R.id.navigation_home, R.id.navigation_shortcut, R.id.navigation_notification, R.id.navigation_gift_box, R.id.navigation_storage_box -> {
                     binding.bottomNavigationHome.visibility = View.VISIBLE
                 }
                 else -> { // 그 외 화면일 때, 바텀 네비게이션 뷰 숨김 -> 이렇게 fragment로 처리할 수 있고, activity로 처리할 수 있음

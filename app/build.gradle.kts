@@ -55,7 +55,9 @@ dependencies {
 
     implementation(libs.androidx.viewpager2)
 
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.github.bumptech.glide:glide:4.13.0")
+//    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.13.0")
 
     implementation (libs.glide.transformations)
 

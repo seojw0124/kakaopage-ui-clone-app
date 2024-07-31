@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_hot_now"
-        android:name="com.jeongu.kakaopageapp.ui.home.HotNowFragment"
+        android:name="com.jeongu.kakaopageapp.ui.home.hotnow.HotNowFragment"
         android:label="지금핫한"
         tools:layout="@layout/fragment_hot_now" />
 
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_realtime_ranking"
-        android:name="com.jeongu.kakaopageapp.ui.home.RealtimeRankingFragment"
+        android:name="com.jeongu.kakaopageapp.ui.home.realtime.RealtimeRankingFragment"
         android:label="실시간 랭킹"
         tools:layout="@layout/fragment_realtime_ranking" />
 

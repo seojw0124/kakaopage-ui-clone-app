@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.realtime
 
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +12,7 @@ import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
 import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.databinding.FragmentRealtimeRankingBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
+import com.jeongu.kakaopageapp.ui.home.hotnow.HotNowContentListAdapter
 
 class RealtimeRankingFragment : Fragment(), ContentItemClickListener {
 

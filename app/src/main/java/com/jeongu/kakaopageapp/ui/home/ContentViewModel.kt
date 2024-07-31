@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.viewmodel
+package com.jeongu.kakaopageapp.ui.home
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.jeongu.kakaopageapp.data.model.HotNowInfo
 import com.jeongu.kakaopageapp.data.model.HotNowLinearContent
 import com.jeongu.kakaopageapp.data.model.LinearContentInfo
-import com.jeongu.kakaopageapp.data.source.HomeContent2Repository
 import com.jeongu.kakaopageapp.data.source.local.HotNowManager
-import com.jeongu.kakaopageapp.domain.HomeContentRepository
 
 class ContentViewModel : ViewModel() {
 

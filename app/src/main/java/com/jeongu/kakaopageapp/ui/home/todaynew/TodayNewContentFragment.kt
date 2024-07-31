@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.todaynew
 
 import androidx.fragment.app.Fragment
 import com.jeongu.kakaopageapp.R

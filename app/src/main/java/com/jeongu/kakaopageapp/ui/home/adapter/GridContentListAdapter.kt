@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.hotnow
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -18,6 +18,9 @@ import com.jeongu.kakaopageapp.databinding.ItemHotNowSectionTitleBinding
 import com.jeongu.kakaopageapp.databinding.ItemHotNowViewPagerBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
 import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailActivity
+import com.jeongu.kakaopageapp.ui.home.adapter.GridContentListAdapter
+import com.jeongu.kakaopageapp.ui.home.adapter.LinearContentListAdapter
+import com.jeongu.kakaopageapp.ui.home.adapter.ViewPagerAdapter
 
 private const val VIEW_TYPE_VIEW_PAGER = 0
 private const val VIEW_TYPE_SECTION_TITLE = 1

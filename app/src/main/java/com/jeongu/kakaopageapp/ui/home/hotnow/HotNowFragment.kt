@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.hotnow
 
 import android.content.Intent
 import android.net.Uri
@@ -8,15 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.model.LinearContentInfo
 import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
 import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
-import com.jeongu.kakaopageapp.data.source.local.HotNowManager
 import com.jeongu.kakaopageapp.databinding.FragmentHotNowBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
-import com.jeongu.kakaopageapp.ui.viewmodel.ContentViewModel
+import com.jeongu.kakaopageapp.ui.home.ContentViewModel
 
 class HotNowFragment : Fragment(), ContentItemClickListener {
 

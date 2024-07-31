@@ -46,25 +46,28 @@ class MainActivity : AppCompatActivity() {
         //setChip()
     }
 
-    private fun setBottomNavigation() {
+    private fun setBottomNavigation() = with(binding) {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.container_home) as NavHostFragment
         val navController = navHostFragment.navController
-        binding.bottomNavigationHome.setupWithNavController(navController)
+
+        bottomNavigationHome.setupWithNavController(navController)
         // 바텀 네비게이션 뷰가 화면을 가리지 않도록 설정
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
                 R.id.navigation_home, R.id.navigation_shortcut, R.id.navigation_notification, R.id.navigation_gift_box, R.id.navigation_storage_box -> {
-                    binding.bottomNavigationHome.visibility = View.VISIBLE
+                    bottomNavigationHome.visibility = View.VISIBLE
+                    layoutToolbarHome.root.visibility = View.VISIBLE
                     if (destination.id == R.id.navigation_home) {
-                        binding.layoutToolbarHome.groupToolbarTitle.visibility = View.VISIBLE
+                        layoutToolbarHome.groupToolbarTitle.visibility = View.VISIBLE
                     } else {
-                        binding.layoutToolbarHome.groupToolbarTitle.visibility = View.GONE
+                        layoutToolbarHome.groupToolbarTitle.visibility = View.GONE
                     }
                     setToolbarTitle(destination.id)
                 }
-                else -> { // 그 외 화면일 때, 바텀 네비게이션 뷰 숨김 -> 이렇게 fragment로 처리할 수 있고, activity로 처리할 수 있음
-                    binding.bottomNavigationHome.visibility = View.GONE
+                else -> { // 그 외 화면일 때, 바텀 네비게이션 뷰 숨김
+                    bottomNavigationHome.visibility = View.GONE
+                    layoutToolbarHome.root.visibility = View.GONE
                 }
             }
         }

@@ -154,7 +154,7 @@ object HotNowManager {
                         R.drawable.ic_free_3_days_waiting
                     ),
                     LinearContentInfo(
-                        10,
+                        2,
                         R.drawable.img_content_10,
                         "나 혼자만 레벨업",
                         "웹툰",

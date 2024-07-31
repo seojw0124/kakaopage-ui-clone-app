@@ -1,14 +1,15 @@
 package com.jeongu.kakaopageapp.data.source.local
 
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.ContentDetailInfo
 import com.jeongu.kakaopageapp.data.model.EpisodeInfo
 
 object EpisodeManager {
 
-    private val episodeList: List<EpisodeInfo> by lazy { getDummyData() }
+    private val episodeList: MutableList<EpisodeInfo> by lazy { getDummyData() }
 
-    private fun getDummyData(): List<EpisodeInfo> {
-        return listOf(
+    private fun getDummyData(): MutableList<EpisodeInfo> {
+        return mutableListOf(
             EpisodeInfo(
                 0,
                 2,
@@ -142,6 +143,20 @@ object EpisodeManager {
                 isLastViewed = false
             ),
         )
+    }
+
+    fun setLastViewed(id: Int) : ContentDetailInfo? {
+        // 마지막으로 본 에피소드는 isLastViewed를 false
+        // 새로 본 에피소드는 isLastViewed를 true로 설정
+        // copy를 사용하여 새로운 객체를 생성하여 변경된 값을 적용
+        if (episodeList.find { it.id == id }?.isLastViewed == true) return null
+        episodeList.forEachIndexed { index, episodeInfo ->
+            episodeList[index] = episodeInfo.copy(isLastViewed = false)
+        }
+        episodeList.find { it.id == id }?.let {
+            episodeList[episodeList.indexOf(it)] = it.copy(isViewed = true, isLastViewed = true)
+        }
+        return ContentManager.getDetailInfo(episodeList.find { it.id == id }?.contentId ?: -1)
     }
 
     fun getList(): List<EpisodeInfo> {

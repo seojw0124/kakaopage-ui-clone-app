@@ -56,12 +56,30 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.navigation_home, R.id.navigation_shortcut, R.id.navigation_notification, R.id.navigation_gift_box, R.id.navigation_storage_box -> {
                     binding.bottomNavigationHome.visibility = View.VISIBLE
+                    if (destination.id == R.id.navigation_home) {
+                        binding.layoutToolbarHome.groupToolbarTitle.visibility = View.VISIBLE
+                    } else {
+                        binding.layoutToolbarHome.groupToolbarTitle.visibility = View.GONE
+                    }
+                    setToolbarTitle(destination.id)
                 }
                 else -> { // 그 외 화면일 때, 바텀 네비게이션 뷰 숨김 -> 이렇게 fragment로 처리할 수 있고, activity로 처리할 수 있음
                     binding.bottomNavigationHome.visibility = View.GONE
                 }
             }
         }
+    }
+
+    private fun setToolbarTitle(id: Int) {
+        val title = when (id) {
+            R.id.navigation_home -> "추천"
+            R.id.navigation_shortcut -> "바로가기"
+            R.id.navigation_notification -> "알림"
+            R.id.navigation_gift_box -> "선물함"
+            R.id.navigation_storage_box -> "보관함"
+            else -> ""
+        }
+        binding.layoutToolbarHome.tvToolbarTitleRecommend.text = title
     }
 
 

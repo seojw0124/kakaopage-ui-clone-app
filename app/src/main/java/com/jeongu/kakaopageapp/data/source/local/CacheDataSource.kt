@@ -21,4 +21,12 @@ class CacheDataSource {
     fun getRealtimeRankingContentList(): List<HotNowInfo> {
         return HotNowManager.getRealtimeRankingList()
     }
+
+    fun addRecentlyViewedItem(content: HotNowInfo) {
+        HotNowManager.addRecentlyViewedItem(content)
+    }
+
+    fun removeRecentlyViewedItem(content: HotNowInfo) {
+        HotNowManager.removeRecentlyViewedItem(content)
+    }
 }

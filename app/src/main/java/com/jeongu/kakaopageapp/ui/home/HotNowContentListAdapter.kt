@@ -3,6 +3,8 @@ package com.jeongu.kakaopageapp.ui.home
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
 import com.jeongu.kakaopageapp.data.model.HotNowGridContent
@@ -23,9 +25,8 @@ private const val VIEW_TYPE_GRID_CONTENT = 2
 private const val VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT = 3
 
 class HotNowContentListAdapter(
-    private val items: List<HotNowInfo>,
     private val listener: ContentItemClickListener
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : ListAdapter<HotNowInfo, RecyclerView.ViewHolder>(HotNowDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -40,34 +41,31 @@ class HotNowContentListAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HotNowViewPagerViewHolder -> {
-                val item = items[position] as HotNowViewPager
+                val item = getItem(position) as HotNowViewPager
                 holder.bind(item)
             }
             is HotNowSectionTitleViewHolder -> {
-                val item = items[position] as HotNowSectionTitle
+                val item = getItem(position) as HotNowSectionTitle
                 holder.bind(item)
             }
             is HotNowGridViewHolder -> {
-                val item = items[position] as HotNowGridContent
+                val item = getItem(position) as HotNowGridContent
                 holder.bind(item)
             }
             is HotNowLinearViewHolder -> {
-                val item = items[position] as HotNowLinearContent
+                val item = getItem(position) as HotNowLinearContent
                 holder.bind(item)
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
     override fun getItemViewType(position: Int): Int {
-        return when (items[position]) {
+        return when (getItem(position)) {
             is HotNowViewPager -> VIEW_TYPE_VIEW_PAGER
             is HotNowSectionTitle -> VIEW_TYPE_SECTION_TITLE
             is HotNowGridContent -> VIEW_TYPE_GRID_CONTENT
             is HotNowLinearContent -> VIEW_TYPE_LINEAR_HORIZONTAL_CONTENT
+            else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
@@ -84,11 +82,13 @@ class HotNowContentListAdapter(
 
         companion object {
             fun from(parent: ViewGroup): HotNowViewPagerViewHolder {
-                return HotNowViewPagerViewHolder(ItemHotNowViewPagerBinding.inflate(
+                return HotNowViewPagerViewHolder(
+                    ItemHotNowViewPagerBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    ))
+                    )
+                )
             }
         }
     }
@@ -100,7 +100,13 @@ class HotNowContentListAdapter(
 
         companion object {
             fun from(parent: ViewGroup): HotNowSectionTitleViewHolder {
-                return HotNowSectionTitleViewHolder(ItemHotNowSectionTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+                return HotNowSectionTitleViewHolder(
+                    ItemHotNowSectionTitleBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
             }
         }
     }
@@ -111,18 +117,6 @@ class HotNowContentListAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
 
         private val gridContentAdapter = GridContentListAdapter { content ->
-//            val intent = Intent(binding.root.context, ContentDetailActivity::class.java)
-//            intent.putExtra(EXTRA_CONTENT_ID, content.id)
-//            binding.root.context.startActivity(intent)
-            // ContentDetailFragment로 이동
-//            val contentDetailFragment = ContentDetailFragment()
-//            val bundle = Bundle()
-//            bundle.putInt(EXTRA_CONTENT_ID, content.id)
-//            contentDetailFragment.arguments = bundle
-//            (binding.root.context as MainActivity).supportFragmentManager.beginTransaction()
-//                .replace(R.id.container_home, contentDetailFragment)
-//                .addToBackStack(null)
-//                .commit()
             listener.onContentItemClick(content.id)
         }
 
@@ -175,5 +169,15 @@ class HotNowContentListAdapter(
                 )
             }
         }
+    }
+}
+
+class HotNowDiffCallback : DiffUtil.ItemCallback<HotNowInfo>() {
+    override fun areItemsTheSame(oldItem: HotNowInfo, newItem: HotNowInfo): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: HotNowInfo, newItem: HotNowInfo): Boolean {
+        return oldItem == newItem
     }
 }

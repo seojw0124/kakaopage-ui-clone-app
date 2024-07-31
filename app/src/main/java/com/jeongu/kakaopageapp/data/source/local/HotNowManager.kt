@@ -12,10 +12,10 @@ import com.jeongu.kakaopageapp.data.model.TopContentInfo
 
 object HotNowManager {
 
-    private val hotNowContentList: List<HotNowInfo> by lazy { getDummyData() }
+    private val hotNowContentList: MutableList<HotNowInfo> by lazy { getDummyData() }
 
-    private fun getDummyData(): List<HotNowInfo> {
-        return listOf(
+    private fun getDummyData(): MutableList<HotNowInfo> {
+        return mutableListOf(
             HotNowViewPager(
                 listOf(
                     TopContentInfo(
@@ -263,7 +263,31 @@ object HotNowManager {
         )
     }
 
-    fun getList(): List<HotNowInfo> = hotNowContentList
+    fun getList(): MutableList<HotNowInfo> = hotNowContentList
+
+    fun getRecentlyViewedList(): List<HotNowLinearContent> {
+        return hotNowContentList.filterIsInstance<HotNowLinearContent>()
+    }
+
+    fun addRecentlyViewedItem(content: HotNowInfo) {
+        if (content !is HotNowLinearContent) return
+        hotNowContentList.indexOfFirst { it is HotNowLinearContent }
+            .takeIf { it != -1 }
+            ?.let {
+                if (hotNowContentList[it] == content) {
+                    hotNowContentList.remove(content)
+                    hotNowContentList.add(it, content)
+                } else {
+                    hotNowContentList.add(it, content)
+                }
+            }
+    }
+
+    fun removeRecentlyViewedItem(content: HotNowInfo) {
+        if (content !is HotNowLinearContent) return
+        hotNowContentList.remove(content)
+    }
+
 
     // 임의로 데이터 필터링
     fun getRealtimeRankingList(): List<HotNowInfo> {

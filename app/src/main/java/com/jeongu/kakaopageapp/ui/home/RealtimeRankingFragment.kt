@@ -7,16 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
-import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
-import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
-import com.jeongu.kakaopageapp.data.source.HomeContentRepository
 import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.databinding.FragmentRealtimeRankingBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
-import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailFragment
 
 class RealtimeRankingFragment : Fragment(), ContentItemClickListener {
 
@@ -25,7 +20,7 @@ class RealtimeRankingFragment : Fragment(), ContentItemClickListener {
 
     private val contentRepository = HomeContentRepositoryImpl(CacheDataSource.getCacheDataSource())
     private val realtimeRankingListAdapter by lazy {
-        HotNowContentListAdapter(contentRepository.getRealtimeRankingContentList(), this)
+        HotNowContentListAdapter(this)
     }
 
 //    private val repository = HomeContentRepository()

@@ -6,4 +6,8 @@ interface HomeContentRepository {
     fun getHotNowContentList(): List<HotNowInfo>
 
     fun getRealtimeRankingContentList(): List<HotNowInfo>
+
+    fun addRecentlyViewedItem(content: HotNowInfo)
+
+    fun removeRecentlyViewedItem(content: HotNowInfo)
 }

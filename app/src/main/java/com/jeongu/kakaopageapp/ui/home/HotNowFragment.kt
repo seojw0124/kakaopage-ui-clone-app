@@ -6,21 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.jeongu.kakaopageapp.EXTRA_CONTENT_ID
-import com.jeongu.kakaopageapp.MainActivity
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.LinearContentInfo
 import com.jeongu.kakaopageapp.data.repository.HomeContentRepositoryImpl
-import com.jeongu.kakaopageapp.data.source.HomeContentRepository
 import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.data.source.local.HotNowManager
 import com.jeongu.kakaopageapp.databinding.FragmentHotNowBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
-import com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailFragment
+import com.jeongu.kakaopageapp.ui.viewmodel.ContentViewModel
 
 class HotNowFragment : Fragment(), ContentItemClickListener {
 
@@ -29,8 +25,11 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 
     private val contentRepository = HomeContentRepositoryImpl(CacheDataSource.getCacheDataSource())
     private val hotNowContentListAdapter by lazy {
-        HotNowContentListAdapter(contentRepository.getHotNowContentList(), this)
+        HotNowContentListAdapter(this)
     }
+
+    private val viewModel by activityViewModels<ContentViewModel>()
+
 
 //    private val repository = HomeContentRepository()
 //
@@ -52,19 +51,22 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
         setLayout()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun setLayout() {
         initRecyclerView()
+        initViewModel()
         setTopBanner()
     }
 
     private fun initRecyclerView() {
         binding.rvHotNowContentList.apply {
             adapter = hotNowContentListAdapter
+            //hotNowContentListAdapter.submitList(contentRepository.getHotNowContentList())
+        }
+    }
+
+    private fun initViewModel() = with(viewModel) {
+        hotNowContentList.observe(viewLifecycleOwner) { contentList ->
+            hotNowContentListAdapter.submitList(contentList)
         }
     }
 
@@ -79,6 +81,11 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
 //            startActivity(intent)
 //        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onContentItemClick(contentId: Int) {
@@ -99,8 +106,18 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 //            replace(R.id.container_home, ContentDetailFragment())
 //            addToBackStack(null)
 //        }
+        // 뷰모델에 addRecentlyViewedItem(contentId) 호출
+        val item = LinearContentInfo(
+            14,
+            R.drawable.img_content_14,
+            "말단 병사에서 군주까지",
+            "웹툰",
+            R.drawable.ic_clock
+        )
+        viewModel.addRecentlyViewedItem(item)
 
-        val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
-        findNavController().navigate(action)
+
+//        val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
+//        findNavController().navigate(action)
     }
 }

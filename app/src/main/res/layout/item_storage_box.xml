@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="5dp">
+
+    <ImageView
+        android:id="@+id/iv_storage_content_thumbnail_image"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/bg_content_image_8dp"
+        android:clipToOutline="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_content_12" />
+
+    <TextView
+        android:id="@+id/tv_storage_content_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/tv_storage_content_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_storage_content_thumbnail_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="로그인 무림" />
+
+    <TextView
+        android:id="@+id/tv_storage_content_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/gray_400"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_storage_content_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_storage_content_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_storage_content_title"
+        tools:text="웹툰 · 판타지" />
+
+    <TextView
+        android:id="@+id/tv_storage_content_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="24.07.18 · 연재중"
+        android:textColor="@color/gray_400"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_storage_content_update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_storage_content_description"
+        app:layout_constraintTop_toBottomOf="@id/tv_storage_content_description" />
+
+    <TextView
+        android:id="@+id/tv_storage_content_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="최신 화 업데이트 완료"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_storage_content_date"
+        app:layout_constraintTop_toBottomOf="@id/tv_storage_content_date" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_storage_content_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_storage_content_continue,iv_storage_content_arrow" />
+
+    <TextView
+        android:id="@+id/tv_storage_content_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이어보기"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_storage_content_arrow"
+        app:layout_constraintEnd_toStartOf="@id/iv_storage_content_arrow"
+        app:layout_constraintTop_toTopOf="@id/iv_storage_content_arrow" />
+
+    <ImageView
+        android:id="@+id/iv_storage_content_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,54 +1,88 @@
-package com.jeongu.kakaopageapp
+package com.jeongu.kakaopageapp.ui
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import com.jeongu.kakaopageapp.data.source.local.HotNowManager
-import com.jeongu.kakaopageapp.databinding.ActivityMainBinding
-import com.jeongu.kakaopageapp.ui.home.HomeFragment
-import com.jeongu.kakaopageapp.ui.home.HotNowContentListAdapter
-import com.jeongu.kakaopageapp.ui.shortcut.ShortcutFragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.databinding.ActivityHomeBinding
 
 const val EXTRA_STRING_CHIP = "chip"
 const val EXTRA_CONTENT_ID = "contentId"
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
     //private val chipGroup by lazy { findViewById<ChipGroup>(R.id.chip_group) }
     private var previousChipId: Int = View.NO_ID
 
-    private val hotNowContentListAdapter by lazy {
-        HotNowContentListAdapter(HotNowManager.getList())
-    }
+//    private val hotNowContentListAdapter by lazy {
+//        HotNowContentListAdapter(HotNowManager.getList(), this)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.home)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 50, systemBars.right, 0)
             insets
         }
 
-        setLayout()
+        setBottomNavigation()
     }
 
     private fun setLayout() {
         //setViewPager2()
         //initRecyclerView()
-        setToolbar()
+        //setToolbar()
         //setTopBanner()
         setBottomNavigation()
         //setChip()
+    }
+
+    private fun setBottomNavigation() = with(binding) {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.container_home) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        bottomNavigationHome.setupWithNavController(navController)
+        // 바텀 네비게이션 뷰가 화면을 가리지 않도록 설정
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.navigation_home, R.id.navigation_shortcut, R.id.navigation_notification, R.id.navigation_gift_box, R.id.navigation_storage_box -> {
+                    bottomNavigationHome.visibility = View.VISIBLE
+                    layoutToolbarHome.root.visibility = View.VISIBLE
+                    if (destination.id == R.id.navigation_home) {
+                        layoutToolbarHome.groupToolbarTitle.visibility = View.VISIBLE
+                    } else {
+                        layoutToolbarHome.groupToolbarTitle.visibility = View.GONE
+                    }
+                    setToolbarTitle(destination.id)
+                }
+                else -> { // 그 외 화면일 때, 바텀 네비게이션 뷰 숨김
+                    bottomNavigationHome.visibility = View.GONE
+                    layoutToolbarHome.root.visibility = View.GONE
+                }
+            }
+        }
+    }
+
+    private fun setToolbarTitle(id: Int) {
+        val title = when (id) {
+            R.id.navigation_home -> "추천"
+            R.id.navigation_shortcut -> "바로가기"
+            R.id.navigation_notification -> "알림"
+            R.id.navigation_gift_box -> "선물함"
+            R.id.navigation_storage_box -> "보관함"
+            else -> ""
+        }
+        binding.layoutToolbarHome.tvToolbarTitleRecommend.text = title
     }
 
 
@@ -67,19 +101,19 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-    private fun setToolbar() {
-        binding.layoutToolbarHome.ivToolbarCash.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
-            startActivity(intent)
-        }
-
-
-//        val toolbar = findViewById<View>(R.id.layout_toolbar)
-//        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+//    private fun setToolbar() {
+//        binding.layoutToolbarHome.ivToolbarCash.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
 //            startActivity(intent)
 //        }
-    }
+//
+//
+////        val toolbar = findViewById<View>(R.id.layout_toolbar)
+////        toolbar.findViewById<View>(R.id.iv_toolbar_cash).setOnClickListener {
+////            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/history/cash"))
+////            startActivity(intent)
+////        }
+//    }
 
 //    private fun setTopBanner() {
 //        binding.viewTopBanner.setOnClickListener {
@@ -94,41 +128,41 @@ class MainActivity : AppCompatActivity() {
 ////        }
 //    }
 
-    private fun setBottomNavigation() {
-        binding.bottomNavigationMain.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    HomeFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_shortcut -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_notification -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_gift_box -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                R.id.navigation_storage_box -> {
-                    ShortcutFragment().loadFragment()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
-    private fun Fragment.loadFragment() {
-        supportFragmentManager.commit {
-            replace(R.id.container_home, this@loadFragment)
-            setReorderingAllowed(true)
-            addToBackStack(null)
-        }
-    }
+//    private fun setBottomNavigation() {
+//        binding.bottomNavigationMain.setOnItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.navigation_home -> {
+//                    HomeFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_shortcut -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_notification -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_gift_box -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                R.id.navigation_storage_box -> {
+//                    ShortcutFragment().loadFragment()
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
+//    }
+//
+//    private fun Fragment.loadFragment() {
+//        supportFragmentManager.commit {
+//            replace(R.id.container_home, this@loadFragment)
+//            setReorderingAllowed(true)
+//            addToBackStack(null)
+//        }
+//    }
 
 //    private fun setChip() {
 //        val chipData = intent.getStringExtra(EXTRA_STRING_CHIP) ?: ""

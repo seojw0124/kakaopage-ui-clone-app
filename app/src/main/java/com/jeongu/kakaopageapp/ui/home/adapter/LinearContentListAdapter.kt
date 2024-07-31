@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +13,11 @@ class LinearContentListAdapter(private val onClick: (LinearContentInfo) -> Unit)
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {
         val binding =
-            ItemLinearHorizontalContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemLinearHorizontalContentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return ContentViewHolder(binding)
     }
 

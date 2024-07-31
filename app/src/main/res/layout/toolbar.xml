@@ -8,6 +8,12 @@
     android:paddingEnd="10dp"
     android:paddingBottom="15dp">
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_toolbar_title_webtoon,tv_toolbar_title_web_novel,tv_toolbar_title_book" />
+
     <TextView
         android:id="@+id/tv_toolbar_title_recommend"
         style="@style/AppToolbar.Gray_900"
@@ -62,9 +68,9 @@
         android:id="@+id/iv_toolbar_search"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:layout_marginEnd="10dp"
         android:contentDescription="@string/description_search"
         android:src="@drawable/ic_search"
-        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@id/iv_toolbar_menu"
         app:layout_constraintEnd_toStartOf="@id/iv_toolbar_menu"
         app:layout_constraintTop_toTopOf="@id/iv_toolbar_menu" />
@@ -74,9 +80,9 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@id/iv_toolbar_search"
-        app:layout_constraintTop_toTopOf="@id/iv_toolbar_search"
+        android:src="@drawable/ic_cash"
         app:layout_constraintBottom_toBottomOf="@id/iv_toolbar_search"
-        android:src="@drawable/ic_cash" />
+        app:layout_constraintEnd_toStartOf="@id/iv_toolbar_search"
+        app:layout_constraintTop_toTopOf="@id/iv_toolbar_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

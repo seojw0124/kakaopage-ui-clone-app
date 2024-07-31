@@ -1,9 +1,10 @@
 package com.jeongu.kakaopageapp.ui.contentdetail
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class DetailPagerStateAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+class DetailPagerStateAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount() = 4
     override fun createFragment(position: Int) = when (position) {
         0 -> EpisodeFragment()

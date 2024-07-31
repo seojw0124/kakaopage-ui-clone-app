@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.jeongu.kakaopageapp.EXTRA_STRING_CHIP
-import com.jeongu.kakaopageapp.MainActivity
+import com.jeongu.kakaopageapp.ui.EXTRA_STRING_CHIP
+import com.jeongu.kakaopageapp.ui.MainActivity
 import com.jeongu.kakaopageapp.R
 
 class ShortcutActivity : AppCompatActivity() {
@@ -81,7 +81,7 @@ class ShortcutActivity : AppCompatActivity() {
     }
 
     private fun setBottomNavigation() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_home)
         bottomNavigationView.selectedItemId = R.id.navigation_shortcut
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {

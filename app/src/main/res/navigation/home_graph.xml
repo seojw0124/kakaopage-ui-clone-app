@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_grapg"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.jeongu.kakaopageapp.ui.home.HomeFragment"
+        android:label="홈"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_hot_now"
+        android:name="com.jeongu.kakaopageapp.ui.home.hotnow.HotNowFragment"
+        android:label="지금핫한"
+        tools:layout="@layout/fragment_hot_now" />
+
+    <fragment
+        android:id="@+id/navigation_shortcut"
+        android:name="com.jeongu.kakaopageapp.ui.shortcut.ShortcutFragment"
+        android:label="바로보기"
+        tools:layout="@layout/fragment_shortcut" />
+
+    <fragment
+        android:id="@+id/navigation_realtime_ranking"
+        android:name="com.jeongu.kakaopageapp.ui.home.realtime.RealtimeRankingFragment"
+        android:label="실시간 랭킹"
+        tools:layout="@layout/fragment_realtime_ranking" />
+
+    <fragment
+        android:id="@+id/navigation_storage_box"
+        android:name="com.jeongu.kakaopageapp.ui.storagebox.StorageBoxFragment"
+        android:label="보관함"
+        tools:layout="@layout/fragment_storage_box"/>
+
+    <fragment
+        android:id="@+id/navigation_content_detail"
+        android:name="com.jeongu.kakaopageapp.ui.contentdetail.ContentDetailFragment"
+        android:label="콘텐츠 상세 페이지"
+        tools:layout="@layout/fragment_content_detail">
+        <argument
+            android:name="contentId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_article_detail"
+        app:destination="@id/navigation_content_detail"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out" />
+</navigation>

@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.home
+package com.jeongu.kakaopageapp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +19,8 @@ class ViewPagerAdapter() : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
     class ViewHolder(val binding: ItemImageSlideBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemImageSlideBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemImageSlideBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -64,26 +65,3 @@ class ViewPagerAdapter() : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
         private const val INFINTE_MULTIPLIER = 100
     }
 }
-
-//class ViewPagerAdapter(private val context: Context, private val imageList: List<Int>): PagerAdapter() {
-//    override fun getCount(): Int {
-//        return imageList.size
-//    }
-//
-//    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-//        return view == `object`
-//    }
-//
-//    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-//        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//        val view = inflater.inflate(R.layout.content01, container, false)
-//        val imageView = view.findViewById<ImageView>(R.id.iv_content_01)
-//        imageView.setImageResource(imageList[position])
-//        container.addView(view)
-//        return view
-//    }
-//
-//    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-//        container.removeView(`object` as View)
-//    }
-//}

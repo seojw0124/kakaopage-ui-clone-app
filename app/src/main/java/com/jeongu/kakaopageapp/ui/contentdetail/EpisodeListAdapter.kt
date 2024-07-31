@@ -11,7 +11,7 @@ import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.model.EpisodeInfo
 import com.jeongu.kakaopageapp.databinding.ItemContentEpisodeBinding
 
-class EpisodeListAdapter() : ListAdapter<EpisodeInfo, EpisodeListAdapter.EpisodeViewHolder>(
+class EpisodeListAdapter(private val onClick: (EpisodeInfo) -> Unit) : ListAdapter<EpisodeInfo, EpisodeListAdapter.EpisodeViewHolder>(
     EpisodeDiffCallback()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
@@ -26,6 +26,9 @@ class EpisodeListAdapter() : ListAdapter<EpisodeInfo, EpisodeListAdapter.Episode
     inner class EpisodeViewHolder(private val binding: ItemContentEpisodeBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(episode: EpisodeInfo) {
+            itemView.setOnClickListener {
+                onClick(episode)
+            }
             with(binding) {
                 ivEpisodeThumbnailImage.setImageResource(episode.thumbnailImage)
                 tvEpisodeTitle.text = episode.title

@@ -1,6 +1,8 @@
 package com.jeongu.kakaopageapp.data.source.local
 
+import android.util.Log
 import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.ContentDetailInfo
 import com.jeongu.kakaopageapp.data.model.GridContentInfo
 import com.jeongu.kakaopageapp.data.model.HotNowGridContent
 import com.jeongu.kakaopageapp.data.model.HotNowInfo
@@ -12,10 +14,10 @@ import com.jeongu.kakaopageapp.data.model.TopContentInfo
 
 object HotNowManager {
 
-    private val hotNowContentList: List<HotNowInfo> by lazy { getDummyData() }
+    private val hotNowContentList: MutableList<HotNowInfo> by lazy { getDummyData() }
 
-    private fun getDummyData(): List<HotNowInfo> {
-        return listOf(
+    private fun getDummyData(): MutableList<HotNowInfo> {
+        return mutableListOf(
             HotNowViewPager(
                 listOf(
                     TopContentInfo(
@@ -152,7 +154,7 @@ object HotNowManager {
                         R.drawable.ic_free_3_days_waiting
                     ),
                     LinearContentInfo(
-                        10,
+                        2,
                         R.drawable.img_content_10,
                         "나 혼자만 레벨업",
                         "웹툰",
@@ -187,7 +189,7 @@ object HotNowManager {
                         R.drawable.ic_free_serial
                     ),
                     LinearContentInfo(
-                        5,
+                        15,
                         R.drawable.img_content_15,
                         "흑백무제",
                         "웹툰",
@@ -263,11 +265,55 @@ object HotNowManager {
         )
     }
 
-    fun getList(): List<HotNowInfo> = hotNowContentList
+    fun getList(): MutableList<HotNowInfo> = hotNowContentList
+
+    fun getRecentlyViewedList(): List<ContentDetailInfo> {
+//        return hotNowContentList.filterIsInstance<HotNowLinearContent>()
+//            .flatMap { it.linearItems }
+        // HotNowLinearContent의 list를 반환
+//        return hotNowContentList.filter { it is HotNowLinearContent }
+//            .map { it as HotNowLinearContent }
+//            .flatMap { it.linearItems }
+//        return hotNowContentList
+//            .filterIsInstance<HotNowLinearContent>()
+//            .flatMap { it.linearItems }
+        // it.linearItems의 id를 받아와서 ContentManager에서 찾아와서 리스트로 반환
+        val list = hotNowContentList.filterIsInstance<HotNowLinearContent>()
+            .flatMap { it.linearItems }
+        Log.d("jeongu", "list: $list")
+        val result = mutableListOf<ContentDetailInfo>()
+        list.forEach { content ->
+            val item = ContentManager.getDetailInfo(content.id)
+            Log.d("jeongu", "item: $item")
+            item?.let { result.add(it) }
+        }
+        Log.d("jeongu", "result: $result")
+        return result
+    }
+
+    fun addRecentlyViewedItem(content: HotNowInfo) {
+        if (content !is HotNowLinearContent) return
+        hotNowContentList.indexOfFirst { it is HotNowLinearContent }
+            .takeIf { it != -1 }
+            ?.let {
+                if (hotNowContentList[it] == content) {
+                    hotNowContentList.remove(content)
+                    hotNowContentList.add(it, content)
+                } else {
+                    hotNowContentList.add(it, content)
+                }
+            }
+    }
+
+    fun removeRecentlyViewedItem(content: HotNowInfo) {
+        if (content !is HotNowLinearContent) return
+        hotNowContentList.remove(content)
+    }
+
 
     // 임의로 데이터 필터링
     fun getRealtimeRankingList(): List<HotNowInfo> {
-        // HotNowLinearContent 제외
-        return hotNowContentList.filter { it !is HotNowLinearContent }
+        // HotNowViewPager 제외
+        return hotNowContentList.filter { it !is HotNowViewPager }
     }
 }

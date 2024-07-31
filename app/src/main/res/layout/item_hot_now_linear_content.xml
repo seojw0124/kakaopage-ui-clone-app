@@ -5,19 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_hot_now_linear_content"
+    <androidx.viewpager2.integration.testapp.NestedScrollableHost
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:nestedScrollingEnabled="false"
-        android:orientation="horizontal"
-        android:paddingStart="6dp"
-        android:paddingEnd="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_linear_horizontal_content" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hot_now_linear_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal"
+            android:paddingStart="6dp"
+            android:paddingEnd="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_linear_horizontal_content" />
+
+    </androidx.viewpager2.integration.testapp.NestedScrollableHost>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

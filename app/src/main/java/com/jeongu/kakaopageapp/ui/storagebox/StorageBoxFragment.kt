@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.jeongu.kakaopageapp.databinding.FragmentStorageBoxBinding
 
 class StorageBoxFragment : Fragment() {
@@ -19,7 +20,8 @@ class StorageBoxFragment : Fragment() {
     }
     private val storageBoxAdapter by lazy {
         StorageBoxListAdapter { content ->
-            Toast.makeText(requireContext(), content.thumbnailImage, Toast.LENGTH_SHORT).show()
+            val action = StorageBoxFragmentDirections.actionGlobalArticleDetail(content.id)
+            findNavController().navigate(action)
         }
     }
 

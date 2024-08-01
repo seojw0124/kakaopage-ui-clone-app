@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.jeongu.kakaopageapp.ui.EXTRA_STRING_CHIP
 import com.jeongu.kakaopageapp.ui.MainActivity
 import com.jeongu.kakaopageapp.databinding.FragmentShortcutBinding
@@ -39,21 +40,20 @@ class ShortcutFragment : Fragment() {
     }
 
     private fun setCategory() {
-//        val categoryList = listOf(
-//            "지금핫한", "실시간 랭킹", "오늘신작", "TV속 작품", "이벤트",
-//            "남성인기", "여성인기", "완결추천", "브랜드"
-//        )
-//        val categoryViewList = listOf(
-//            binding.tvCategory1, binding.tvCategory2, binding.tvCategory3,
-//            binding.tvCategory4, binding.tvCategory5, binding.tvCategory6,
-//            binding.tvCategory7, binding.tvCategory8, binding.tvCategory9
-//        )
-//        categoryList.forEachIndexed { index, category ->
-//            categoryViewList[index].text = category
-//            categoryViewList[index].setOnClickListener {
-//                navigateToHome(category)
-//            }
-//        }
+        with(binding) {
+            layoutCategory01.root.setOnClickListener {
+                val action = ShortcutFragmentDirections.actionShortcutToHome(layoutCategory01.tvCategory01.text.toString())
+                findNavController().navigate(action)
+            }
+            layoutCategory02.root.setOnClickListener {
+                val action = ShortcutFragmentDirections.actionShortcutToHome(layoutCategory02.tvCategory02.text.toString())
+                findNavController().navigate(action)
+            }
+            layoutCategory03.root.setOnClickListener {
+                val action = ShortcutFragmentDirections.actionShortcutToHome(layoutCategory03.tvCategory03.text.toString())
+                findNavController().navigate(action)
+            }
+        }
     }
 
     private fun navigateToHome(category: String) {

@@ -1,10 +1,10 @@
-package com.jeongu.kakaopageapp.ui.contentdetail
+package com.jeongu.kakaopageapp.ui.contentdetail.Episode
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jeongu.kakaopageapp.data.model.EpisodeInfo
 import com.jeongu.kakaopageapp.data.source.local.EpisodeManager

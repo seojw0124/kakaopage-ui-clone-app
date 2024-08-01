@@ -1,4 +1,4 @@
-package com.jeongu.kakaopageapp.ui.contentdetail
+package com.jeongu.kakaopageapp.ui.contentdetail.Episode
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,8 @@ class EpisodeListAdapter(private val onClick: (EpisodeInfo) -> Unit) : ListAdapt
     EpisodeDiffCallback()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
-        val binding = ItemContentEpisodeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemContentEpisodeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return EpisodeViewHolder(binding)
     }
 

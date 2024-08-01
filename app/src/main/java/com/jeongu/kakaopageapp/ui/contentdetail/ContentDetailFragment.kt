@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -26,6 +27,7 @@ class ContentDetailFragment : Fragment() {
     private var _binding: FragmentContentDetailBinding? = null
     private val binding get() = _binding!!
     //private var contentId = -1
+
     private val args: ContentDetailFragmentArgs by navArgs()
 
     private val contentDetailTabTitles = arrayOf(
@@ -60,24 +62,12 @@ class ContentDetailFragment : Fragment() {
         setTabLayout()
         //setToolbar()
         binding.tvContentDetailTitle.setOnClickListener {
-//            val item = LinearContentInfo(
-//                14,
-//                R.drawable.img_content_14,
-//                "말단 병사에서 군주까지",
-//                "웹툰",
-//                R.drawable.ic_clock
-//            )
             viewModel.addRecentlyViewedItem(contentInfo)
+            Toast.makeText(context, "최근 본 작품에 추가되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun getContentId() {
-//        setFragmentResultListener("asdf") { _, bundle ->
-//            contentId = bundle.getInt("aaa")
-//            if (contentId != -1) {
-//                setContentInfo(contentId)
-//            }
-//        }
         val contentId = args.contentId
         if (contentId != -1) {
             setContentInfo(contentId)

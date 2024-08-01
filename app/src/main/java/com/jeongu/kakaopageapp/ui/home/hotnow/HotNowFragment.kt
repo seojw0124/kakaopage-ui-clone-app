@@ -74,12 +74,6 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
             startActivity(intent)
         }
-
-//        val topBanner = findViewById<View>(R.id.view_top_banner)
-//        topBanner.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://page.kakao.com/event/4ff6db86b64489c957dbd92b8d79d8ea"))
-//            startActivity(intent)
-//        }
     }
 
     override fun onDestroyView() {
@@ -105,16 +99,6 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 //            replace(R.id.container_home, ContentDetailFragment())
 //            addToBackStack(null)
 //        }
-        // 뷰모델에 addRecentlyViewedItem(contentId) 호출
-//        val item = LinearContentInfo(
-//            14,
-//            R.drawable.img_content_14,
-//            "말단 병사에서 군주까지",
-//            "웹툰",
-//            R.drawable.ic_clock
-//        )
-//        viewModel.addRecentlyViewedItem(item)
-
 
         val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
         findNavController().navigate(action)

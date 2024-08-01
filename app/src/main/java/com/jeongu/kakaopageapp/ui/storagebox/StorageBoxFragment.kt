@@ -20,7 +20,7 @@ class StorageBoxFragment : Fragment() {
     }
     private val storageBoxAdapter by lazy {
         StorageBoxListAdapter { content ->
-            val action = StorageBoxFragmentDirections.actionGlobalArticleDetail(content.id)
+            val action = StorageBoxFragmentDirections.actionGlobalContentDetail(content.id)
             findNavController().navigate(action)
         }
     }

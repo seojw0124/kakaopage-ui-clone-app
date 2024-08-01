@@ -100,7 +100,7 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
 //            addToBackStack(null)
 //        }
 
-        val action = HotNowFragmentDirections.actionGlobalArticleDetail(contentId)
+        val action = HotNowFragmentDirections.actionGlobalContentDetail(contentId)
         findNavController().navigate(action)
     }
 }

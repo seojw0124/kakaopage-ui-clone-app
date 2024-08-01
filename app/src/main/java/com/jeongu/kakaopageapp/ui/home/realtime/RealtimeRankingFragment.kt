@@ -83,7 +83,7 @@ class RealtimeRankingFragment : Fragment(), ContentItemClickListener {
 //            addToBackStack(null)
 //        }
 
-        val action = RealtimeRankingFragmentDirections.actionGlobalArticleDetail(contentId)
+        val action = RealtimeRankingFragmentDirections.actionGlobalContentDetail(contentId)
         findNavController().navigate(action)
     }
 }

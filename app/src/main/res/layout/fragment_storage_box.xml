@@ -17,6 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_linear_horizontal_content" />
+        tools:listitem="@layout/item_storage_box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

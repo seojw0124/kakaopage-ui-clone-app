@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="11dp"
-    tools:context=".ui.contentdetail.EpisodeFragment">
+    tools:context=".ui.contentdetail.Episode.EpisodeFragment">
 
     <View
         android:id="@+id/view_content_detail_top_banner_area"

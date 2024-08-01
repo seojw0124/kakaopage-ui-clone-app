@@ -270,14 +270,12 @@ object HotNowManager {
     fun getRecentlyViewedList(): List<ContentDetailInfo> {
 //        return hotNowContentList.filterIsInstance<HotNowLinearContent>()
 //            .flatMap { it.linearItems }
-        // HotNowLinearContent의 list를 반환
 //        return hotNowContentList.filter { it is HotNowLinearContent }
 //            .map { it as HotNowLinearContent }
 //            .flatMap { it.linearItems }
 //        return hotNowContentList
 //            .filterIsInstance<HotNowLinearContent>()
 //            .flatMap { it.linearItems }
-        // it.linearItems의 id를 받아와서 ContentManager에서 찾아와서 리스트로 반환
         val list = hotNowContentList.filterIsInstance<HotNowLinearContent>()
             .flatMap { it.linearItems }
         Log.d("jeongu", "list: $list")
@@ -294,7 +292,7 @@ object HotNowManager {
     fun addRecentlyViewedItem(content: HotNowInfo) {
         if (content !is HotNowLinearContent) return
         hotNowContentList.indexOfFirst { it is HotNowLinearContent }
-            .takeIf { it != -1 }
+            .takeIf { it != -1 } // -1이 아닐 때만 실행 ******* takeIf 메모 *********
             ?.let {
                 if (hotNowContentList[it] == content) {
                     hotNowContentList.remove(content)

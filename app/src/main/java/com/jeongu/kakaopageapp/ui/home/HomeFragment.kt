@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.databinding.FragmentHomeBinding
@@ -13,6 +14,8 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private val args: HomeFragmentArgs by navArgs()
 
     private val homeTabTitles = mapOf(
         "지금핫한" to R.drawable.ic_thunder,
@@ -51,5 +54,12 @@ class HomeFragment : Fragment() {
             tab.text = homeTabTitles.keys.toList()[position]
             tab.setIcon(homeTabTitles.values.toList()[position])
         }.attach()
+
+        // args는 categroyName을 받아온다.
+        if (args.categoryName != "") {
+            // 해당 카테고리로 이동
+            val position = homeTabTitles.keys.toList().indexOf(args.categoryName)
+            binding.viewpagerHome.setCurrentItem(position, false)
+        }
     }
 }

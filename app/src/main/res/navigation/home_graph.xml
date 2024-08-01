@@ -9,7 +9,12 @@
         android:id="@+id/navigation_home"
         android:name="com.jeongu.kakaopageapp.ui.home.HomeFragment"
         android:label="홈"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="categoryName"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_hot_now"
@@ -21,7 +26,11 @@
         android:id="@+id/navigation_shortcut"
         android:name="com.jeongu.kakaopageapp.ui.shortcut.ShortcutFragment"
         android:label="바로보기"
-        tools:layout="@layout/fragment_shortcut" />
+        tools:layout="@layout/fragment_shortcut" >
+        <action
+            android:id="@+id/action_shortcut_to_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_realtime_ranking"

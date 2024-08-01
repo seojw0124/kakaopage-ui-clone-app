@@ -27,7 +27,7 @@ class ContentViewModel : ViewModel() {
         Log.d("ContentViewModel", "currentList: ${currentList.size}")
 //        val updatedList = currentList.map {
 //            if (it is HotNowLinearContent) {
-//                Log.d("ContentViewModel", "addRecentlyViewedItem: ${it.linearItems.size}")
+//                Log.d("ContentViewModel", "addRecentlyViewedItem: ${it.linearItems}")
 //                val updatedItems = it.linearItems.map { item ->
 //                    if (item.id == content.id) content else item
 //                }

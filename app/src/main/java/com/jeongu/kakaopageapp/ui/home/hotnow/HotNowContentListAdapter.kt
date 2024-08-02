@@ -83,11 +83,7 @@ class HotNowContentListAdapter(
         companion object {
             fun from(parent: ViewGroup): HotNowViewPagerViewHolder {
                 return HotNowViewPagerViewHolder(
-                    ItemHotNowViewPagerBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
+                    ItemHotNowViewPagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }
         }
@@ -101,11 +97,7 @@ class HotNowContentListAdapter(
         companion object {
             fun from(parent: ViewGroup): HotNowSectionTitleViewHolder {
                 return HotNowSectionTitleViewHolder(
-                    ItemHotNowSectionTitleBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
+                    ItemHotNowSectionTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }
         }
@@ -131,11 +123,7 @@ class HotNowContentListAdapter(
         companion object {
             fun from(parent: ViewGroup, listener: ContentItemClickListener): HotNowGridViewHolder {
                 return HotNowGridViewHolder(
-                    ItemHotNowGridContentBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    ),
+                    ItemHotNowGridContentBinding.inflate(LayoutInflater.from(parent.context), parent, false),
                     listener
                 )
             }
@@ -165,11 +153,7 @@ class HotNowContentListAdapter(
         companion object {
             fun from(parent: ViewGroup, listener: ContentItemClickListener): HotNowLinearViewHolder {
                 return HotNowLinearViewHolder(
-                    ItemHotNowLinearContentBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    ),
+                    ItemHotNowLinearContentBinding.inflate(LayoutInflater.from(parent.context), parent, false),
                     listener
                 )
             }
@@ -179,10 +163,10 @@ class HotNowContentListAdapter(
 
 class HotNowDiffCallback : DiffUtil.ItemCallback<HotNowInfo>() {
     override fun areItemsTheSame(oldItem: HotNowInfo, newItem: HotNowInfo): Boolean {
-        return oldItem == newItem
+        return oldItem != newItem
     }
 
     override fun areContentsTheSame(oldItem: HotNowInfo, newItem: HotNowInfo): Boolean {
-        return oldItem == newItem
+        return oldItem != newItem
     }
 }

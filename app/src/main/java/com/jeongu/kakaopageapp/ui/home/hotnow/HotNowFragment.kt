@@ -16,6 +16,7 @@ import com.jeongu.kakaopageapp.data.source.local.CacheDataSource
 import com.jeongu.kakaopageapp.databinding.FragmentHotNowBinding
 import com.jeongu.kakaopageapp.ui.common.ContentItemClickListener
 import com.jeongu.kakaopageapp.ui.home.ContentViewModel
+import com.jeongu.kakaopageapp.ui.storagebox.ContentViewModelFactory
 
 class HotNowFragment : Fragment(), ContentItemClickListener {
 
@@ -27,7 +28,9 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
         HotNowContentListAdapter(this)
     }
 
-    private val viewModel by activityViewModels<ContentViewModel>()
+    private val viewModel: ContentViewModel by activityViewModels {
+        ContentViewModelFactory(requireContext())
+    }
 
 
 //    private val repository = HomeContentRepository()
@@ -64,8 +67,8 @@ class HotNowFragment : Fragment(), ContentItemClickListener {
     }
 
     private fun initViewModel() = with(viewModel) {
-        hotNowContentList.observe(viewLifecycleOwner) { contentList ->
-            hotNowContentListAdapter.submitList(contentList)
+        hotNowContentListWithRecentlyViewedList.observe(viewLifecycleOwner) { contentList ->
+            hotNowContentListAdapter.submitList(contentList.toList())
         }
     }
 

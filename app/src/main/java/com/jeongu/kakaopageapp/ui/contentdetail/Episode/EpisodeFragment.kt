@@ -9,16 +9,17 @@ import androidx.fragment.app.activityViewModels
 import com.jeongu.kakaopageapp.data.model.EpisodeInfo
 import com.jeongu.kakaopageapp.data.source.local.EpisodeManager
 import com.jeongu.kakaopageapp.databinding.FragmentEpisodeBinding
+import com.jeongu.kakaopageapp.ui.home.ContentViewModel
 import com.jeongu.kakaopageapp.ui.storagebox.StorageBoxViewModel
-import com.jeongu.kakaopageapp.ui.storagebox.StorageBoxViewModelFactory
+import com.jeongu.kakaopageapp.ui.storagebox.ContentViewModelFactory
 
 class EpisodeFragment : Fragment() {
 
     private var _binding: FragmentEpisodeBinding? = null
     private val binding get() = _binding!!
     private val episodeAdapter by lazy { EpisodeListAdapter { episode -> setLastViewed(episode) } }
-    private val viewModel: StorageBoxViewModel by activityViewModels {
-        StorageBoxViewModelFactory(requireContext())
+    private val viewModel: ContentViewModel by activityViewModels {
+        ContentViewModelFactory(requireContext())
     }
 
     override fun onCreateView(

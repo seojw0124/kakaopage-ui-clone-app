@@ -4,15 +4,71 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
+import androidx.lifecycle.switchMap
+import com.jeongu.kakaopageapp.R
+import com.jeongu.kakaopageapp.data.model.ContentDetailInfo
 import com.jeongu.kakaopageapp.data.model.HotNowInfo
 import com.jeongu.kakaopageapp.data.model.HotNowLinearContent
 import com.jeongu.kakaopageapp.data.model.LinearContentInfo
+import com.jeongu.kakaopageapp.data.repository.RecentlyViewedRepository
 import com.jeongu.kakaopageapp.data.source.local.HotNowManager
 
-class ContentViewModel : ViewModel() {
+class ContentViewModel(private val repository: RecentlyViewedRepository) : ViewModel() {
 
     private val _hotNowContentList = MutableLiveData<List<HotNowInfo>>()
-    val hotNowContentList: LiveData<List<HotNowInfo>> = _hotNowContentList
+    val hotNowContentListWithRecentlyViewedList: LiveData<List<HotNowInfo>> = _hotNowContentList.switchMap { hotNowList ->
+        _recentlyViewedList.map { recentlyViewedItems ->
+            val newHotNowList = mutableListOf<HotNowInfo>()
+            newHotNowList.addAll(hotNowList)
+            val hotNowPosition = newHotNowList.indexOfFirst { it is HotNowLinearContent }
+            newHotNowList[hotNowPosition] = HotNowLinearContent(recentlyViewedItems.map {
+                LinearContentInfo(
+                    it.id,
+                    R.drawable.img_content_12,
+                    it.title,
+                    "웹툰",
+                    R.drawable.ic_men
+                )
+            })
+//            newHotNowList.add(HotNowLinearContent(recentlyViewedItems.map {
+//                LinearContentInfo(
+//                    it.id,
+//                    R.drawable.img_content_01,
+//                    it.title,
+//                    "웹툰",
+//                    R.drawable.ic_men
+//                )
+//            }))
+
+            Log.d("HotNowList", hotNowList.size.toString())
+            Log.d("HotNowList2", recentlyViewedItems.size.toString())
+            newHotNowList
+        }
+    }
+    private val _recentlyViewedList: MutableLiveData<List<ContentDetailInfo>> = MutableLiveData()
+    val recentlyViewedList: LiveData<List<ContentDetailInfo>> = _recentlyViewedList
+//    val recentlyViewedDetailList: LiveData<List<ContentDetailInfo>> = _recentlyViewedList.map { content ->
+//        getDetailConent(content.con)
+//    }
+
+    init {
+        loadRecentlyViewed()
+    }
+
+    private fun loadRecentlyViewed() {
+        _recentlyViewedList.value = repository.recentlyViewedList
+    }
+
+    fun addRecentlyViewedItem(content: ContentDetailInfo) {
+        repository.addRecentlyViewedItem(content)
+        _recentlyViewedList.value = repository.recentlyViewedList
+    }
+
+    fun removeRecentlyViewedItem(content: ContentDetailInfo) {
+        repository.removeRecentlyViewedItem(content)
+        _recentlyViewedList.value = repository.recentlyViewedList
+    }
 
     init {
         loadContent()

@@ -18,8 +18,9 @@ import com.jeongu.kakaopageapp.R
 import com.jeongu.kakaopageapp.data.model.ContentDetailInfo
 import com.jeongu.kakaopageapp.data.source.local.ContentManager
 import com.jeongu.kakaopageapp.databinding.FragmentContentDetailBinding
+import com.jeongu.kakaopageapp.ui.home.ContentViewModel
 import com.jeongu.kakaopageapp.ui.storagebox.StorageBoxViewModel
-import com.jeongu.kakaopageapp.ui.storagebox.StorageBoxViewModelFactory
+import com.jeongu.kakaopageapp.ui.storagebox.ContentViewModelFactory
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 class ContentDetailFragment : Fragment() {
@@ -37,8 +38,8 @@ class ContentDetailFragment : Fragment() {
         "댓글"
     )
 
-    private val viewModel: StorageBoxViewModel by activityViewModels {
-        StorageBoxViewModelFactory(requireContext())
+    private val viewModel: ContentViewModel by activityViewModels {
+        ContentViewModelFactory(requireContext())
     }
     private lateinit var contentInfo: ContentDetailInfo
 
